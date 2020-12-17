@@ -1,6 +1,7 @@
 import 'package:F_Demo_1/demo/bottom_navigation_bar_demo.dart';
 import 'package:F_Demo_1/demo/drawer_demo.dart';
 import 'package:F_Demo_1/demo/listview_demo.dart';
+import 'package:F_Demo_1/demo/basic_demo.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -130,11 +131,12 @@ class Home extends StatelessWidget {
             //   size: 128.0,
             //   color: Colors.black12,
             // ),
-            Icon(
-              Icons.change_history,
-              size: 128.0,
-              color: Colors.black12,
-            ),
+            // Icon(
+            //   Icons.change_history,
+            //   size: 128.0,
+            //   color: Colors.black12,
+            // ),
+            BasicDemo(),
             Icon(
               Icons.directions_bike,
               size: 128.0,
