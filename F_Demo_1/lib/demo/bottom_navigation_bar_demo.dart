@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class BottomNavigationBar_Demo extends StatefulWidget {
   BottomNavigationBar_Demo({Key key}) : super(key: key);
 
@@ -8,6 +9,7 @@ class BottomNavigationBar_Demo extends StatefulWidget {
       _BottomNavigationBar_DemoState();
 }
 
+// ignore: camel_case_types
 class _BottomNavigationBar_DemoState extends State<BottomNavigationBar_Demo> {
   int _currentIndex = 0;
 
@@ -28,22 +30,10 @@ class _BottomNavigationBar_DemoState extends State<BottomNavigationBar_Demo> {
       fixedColor: Colors.black,
       unselectedItemColor: Colors.black45,
       items: [
-        BottomNavigationBarItem(
-            // ignore: deprecated_member_use
-            icon: Icon(Icons.explore),
-            title: Text("Explore")),
-        BottomNavigationBarItem(
-            // ignore: deprecated_member_use
-            icon: Icon(Icons.history),
-            title: Text("History")),
-        BottomNavigationBarItem(
-            // ignore: deprecated_member_use
-            icon: Icon(Icons.list),
-            title: Text("List")),
-        BottomNavigationBarItem(
-            // ignore: deprecated_member_use
-            icon: Icon(Icons.person),
-            title: Text("My")),
+        BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
+        BottomNavigationBarItem(icon: Icon(Icons.history), label: "History"),
+        BottomNavigationBarItem(icon: Icon(Icons.list), label: "List"),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: "My"),
       ],
     );
   }

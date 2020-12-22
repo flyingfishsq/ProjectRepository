@@ -1,3 +1,6 @@
+import 'package:F_Demo_1/demo/aspect_ratio_demo.dart';
+import 'package:F_Demo_1/demo/constrained_box_demo.dart';
+import 'package:F_Demo_1/demo/stack_demo.dart';
 import 'package:flutter/material.dart';
 
 class LayoutDemo extends StatelessWidget {
@@ -13,18 +16,80 @@ class LayoutDemo extends StatelessWidget {
     // );
 
     return Container(
-        alignment: Alignment.topLeft,
-        child: Column(
-          //空间分配在部件的周围
-          // mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //剩余空间平均分配
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconBadge(Icons.computer_outlined),
-            IconBadge(Icons.work_outline),
-            IconBadge(Icons.card_giftcard),
-          ],
-        ));
+        // alignment: Alignment.topLeft,
+        // alignment: Alignment.center,
+        child:
+
+//Row与Column的学习
+            //     Row(
+            //   //空间分配在部件的周围
+            //   // mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //   //剩余空间平均分配
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   //副轴上的位置
+            //   // crossAxisAlignment: CrossAxisAlignment.end,
+            //   crossAxisAlignment: CrossAxisAlignment.stretch,
+            //   children: [
+            //     IconBadge(Icons.computer_outlined),
+            //     IconBadge(
+            //       Icons.work_outline,
+            //       size: 64.0,
+            //     ),
+            //     IconBadge(Icons.card_giftcard),
+            //   ],
+            // ),
+
+            Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // //SizedBox的学习
+        // SizedBox(
+        //   width: 200.0,
+        //   height: 300.0,
+        //   child: Container(
+        //       //注意这个alignment的位置
+        //       alignment: Alignment(-1.0, 0.5),
+        //       //看下这个常量的定义会发现实际上就是用一对坐标来确定位置
+        //       // alignment: Alignment.topCenter,
+        //       decoration: BoxDecoration(
+        //         color: Color.fromRGBO(3, 54, 255, 0.5),
+        //         borderRadius: BorderRadius.circular(8.0),
+        //       ),
+        //       child: Icon(
+        //         Icons.ac_unit,
+        //         color: Colors.white,
+        //         size: 48.0,
+        //       )),
+        // ),
+        // //这个SizedBox作为两个SizedBox之间的间隔
+        // SizedBox(
+        //   height: 32.0,
+        // ),
+        // SizedBox(
+        //   width: 100.0,
+        //   height: 100.0,
+        //   child: Container(
+        //       decoration: BoxDecoration(
+        //         color: Color.fromRGBO(3, 54, 255, 0.5),
+        //         borderRadius: BorderRadius.circular(8.0),
+        //       ),
+        //       child: Icon(
+        //         Icons.brightness_2,
+        //         color: Colors.white,
+        //         size: 48.0,
+        //       )),
+        // ),
+
+//Stack的学习，Stack表示一摞小部件
+        StackDemo(),
+
+        //AspectRatio的学习，可以设置子部件的宽高比例
+        // AspectRatioDemo(),
+
+        //ConstrainedBox的学习，可以设置子部件的受限宽高
+        // ConstrainedBoxDemo(),
+      ],
+    ));
   }
 }
 
