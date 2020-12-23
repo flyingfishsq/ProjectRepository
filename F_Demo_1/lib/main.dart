@@ -3,6 +3,7 @@ import 'package:F_Demo_1/demo/drawer_demo.dart';
 import 'package:F_Demo_1/demo/layout_demo.dart';
 import 'package:F_Demo_1/demo/listview_demo.dart';
 import 'package:F_Demo_1/demo/basic_demo.dart';
+import 'package:F_Demo_1/demo/view_demo.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -90,7 +91,7 @@ class Home extends StatelessWidget {
 
 //三个TabLayout
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
@@ -112,6 +113,7 @@ class Home extends StatelessWidget {
               Tab(icon: Icon(Icons.local_florist)),
               Tab(icon: Icon(Icons.change_history)),
               Tab(icon: Icon(Icons.directions_bike)),
+              Tab(icon: Icon(Icons.view_agenda)),
             ],
           ),
           //可以设置一组小部件
@@ -146,6 +148,8 @@ class Home extends StatelessWidget {
             //   size: 128.0,
             //   color: Colors.black12,
             // ),
+
+            ViewDemo(),
           ],
         ),
         //左边抽屉栏
