@@ -3,6 +3,7 @@ import 'package:F_Demo_1/demo/drawer_demo.dart';
 import 'package:F_Demo_1/demo/layout_demo.dart';
 import 'package:F_Demo_1/demo/listview_demo.dart';
 import 'package:F_Demo_1/demo/basic_demo.dart';
+import 'package:F_Demo_1/demo/sliver_demo.dart';
 import 'package:F_Demo_1/demo/view_demo.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,12 @@ class App extends StatelessWidget {
       // ),
       //不在右上角显示debug标识
       debugShowCheckedModeBanner: false,
+
+      // home: Home(),
+      //换一个嵌入页面
+      // home: SliverDemo(),
       home: Home(),
+
       theme: ThemeData(
           primarySwatch: Colors.blue,
           //点击按钮的底色
@@ -43,6 +49,7 @@ class App extends StatelessWidget {
   }
 }
 
+//主要展示了AppBar，NavigationBar，TabBar的使用
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
 
@@ -91,7 +98,7 @@ class Home extends StatelessWidget {
 
 //三个TabLayout
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
@@ -114,6 +121,7 @@ class Home extends StatelessWidget {
               Tab(icon: Icon(Icons.change_history)),
               Tab(icon: Icon(Icons.directions_bike)),
               Tab(icon: Icon(Icons.view_agenda)),
+              Tab(icon: Icon(Icons.directions_boat)),
             ],
           ),
           //可以设置一组小部件
@@ -150,6 +158,8 @@ class Home extends StatelessWidget {
             // ),
 
             ViewDemo(),
+
+            SliverDemo(),
           ],
         ),
         //左边抽屉栏
