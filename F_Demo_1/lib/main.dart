@@ -34,10 +34,23 @@ class App extends StatelessWidget {
       //不在右上角显示debug标识
       debugShowCheckedModeBanner: false,
 
-      // home: Home(),
+      home: Home(),
       //换一个嵌入页面
       // home: SliverDemo(),
-      home: Home(),
+
+      //界面跳转的学习-路由
+      // // home: NavigatorDemo(),
+      // //为路由设置名字方便任意界面的切换
+      // initialRoute: '/',
+      // //可以试试这个
+      // // initialRoute: '/about',
+      // routes: {
+      //   //斜线表示路由的根（初始路由），当前的根表示home中显示的那个界面
+      //   //如果不用这个home，可以屏蔽home，然后设置initialRoute
+      //   '/': (context) => NavigatorDemo(),
+      //   '/about': (context) => MyPage(title: "关于"),
+      // },
+      //界面跳转的学习-路由
 
       theme: ThemeData(
           primarySwatch: Colors.blue,
