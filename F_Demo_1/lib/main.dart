@@ -1,11 +1,14 @@
 import 'package:F_Demo_1/demo/bottom_navigation_bar_demo.dart';
 import 'package:F_Demo_1/demo/drawer_demo.dart';
+import 'package:F_Demo_1/demo/form_demo.dart';
 import 'package:F_Demo_1/demo/layout_demo.dart';
 import 'package:F_Demo_1/demo/listview_demo.dart';
 import 'package:F_Demo_1/demo/basic_demo.dart';
 import 'package:F_Demo_1/demo/sliver_demo.dart';
 import 'package:F_Demo_1/demo/view_demo.dart';
 import 'package:flutter/material.dart';
+
+import 'demo/navigator_demo.dart';
 
 void main() {
   //这里有两个Widget，Center和Text
@@ -34,30 +37,35 @@ class App extends StatelessWidget {
       //不在右上角显示debug标识
       debugShowCheckedModeBanner: false,
 
-      home: Home(),
+      // home: Home(),
       //换一个嵌入页面
       // home: SliverDemo(),
 
       //界面跳转的学习-路由
-      // // home: NavigatorDemo(),
-      // //为路由设置名字方便任意界面的切换
+      // home: NavigatorDemo(),
+      //为路由设置名字方便任意界面的切换
       // initialRoute: '/',
-      // //可以试试这个
-      // // initialRoute: '/about',
-      // routes: {
-      //   //斜线表示路由的根（初始路由），当前的根表示home中显示的那个界面
-      //   //如果不用这个home，可以屏蔽home，然后设置initialRoute
-      //   '/': (context) => NavigatorDemo(),
-      //   '/about': (context) => MyPage(title: "关于"),
-      // },
+      //可以试试这个
+      // initialRoute: '/about',
+      initialRoute: '/form',
+      routes: {
+        //斜线表示路由的根（初始路由），当前的根表示home中显示的那个界面
+        //如果不用这个home，可以屏蔽home，然后设置initialRoute
+        // '/': (context) => NavigatorDemo(),
+        '/': (context) => Home(),
+        '/about': (context) => MyPage(title: "关于"),
+        '/form': (context) => FormDemo(),
+      },
       //界面跳转的学习-路由
 
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          //点击按钮的底色
-          highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
-          //水波纹的颜色
-          splashColor: Colors.white70),
+        primarySwatch: Colors.blue,
+        //点击按钮的底色
+        highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
+        //水波纹的颜色
+        splashColor: Colors.white70,
+        accentColor: Color.fromRGBO(3, 54, 255, 1.0),
+      ),
     );
   }
 }
