@@ -25,7 +25,11 @@ class FormDemo extends StatelessWidget {
           padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [TextFieldDemo()],
+            children: [
+              //单个输入框属性的学习
+              // TextFieldDemo(),
+              RegisterForm(),
+            ],
           ),
         ),
       ),
@@ -33,50 +37,108 @@ class FormDemo extends StatelessWidget {
   }
 }
 
-class ThemeDemo extends StatelessWidget {
-  const ThemeDemo({Key key}) : super(key: key);
+class RegisterForm extends StatefulWidget {
+  RegisterForm({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).accentColor,
-    );
+  _RegisterFormState createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
+  //使用这个获取输入框里的文字
+  final registerFormKey = GlobalKey<FormState>();
+  String userName, password;
+
+//与autovalidate结合使用，避免了打开界面的时候就检查合法性的问题，点击提交按钮之后启动自动检测
+  void _submitRegisterForm() {
+    if (registerFormKey.currentState.validate()) {
+      registerFormKey.currentState.save();
+
+      debugPrint("user name = $userName");
+      debugPrint("password = $password");
+
+      //等同与android原生的SnackBar
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text('正在登录'),
+      ));
+    } else {
+      setState(() {
+        _autoValidate = true;
+      });
+    }
+
+    //在这里调用合法性检测
+    registerFormKey.currentState.validate();
   }
-}
 
-class TextFieldDemo extends StatefulWidget {
-  TextFieldDemo({Key key}) : super(key: key);
+//如果检验不通过，返回提示信息，否则返回null表示验证通过
+  String _validateUserName(value) {
+    if (value.isEmpty) {
+      return '请输入用户名';
+    }
+    return null;
+  }
 
-  @override
-  _TextFieldDemoState createState() => _TextFieldDemoState();
-}
+  String _validatePassword(value) {
+    if (value.isEmpty) {
+      return '请输入密码';
+    }
+    return null;
+  }
 
-class _TextFieldDemoState extends State<TextFieldDemo> {
+//与autovalidate结合使用，避免了打开界面的时候就检查合法性的问题
+  bool _autoValidate = false;
+
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        icon: Icon(Icons.subject),
-        labelText: '标题',
-        labelStyle: TextStyle(fontSize: 28.0, color: Colors.redAccent),
-        hintText: '请输入标题',
-        //去除下划线边框
-        // border: InputBorder.none,
-        //四周都有边框
-        border: OutlineInputBorder(),
-        //让文本框带有背景色
-        filled: true,
-        fillColor: Colors.red[100],
+    return Form(
+      key: registerFormKey,
+      child: Column(
+        children: [
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: '用户名',
+              // hintText: '请输入用户名',
+              helperText: '',
+            ),
+            onSaved: (value) {
+              userName = value;
+            },
+            //字符串验证器
+            validator: _validateUserName,
+            autovalidate: _autoValidate,
+          ),
+          TextFormField(
+            //是否隐藏输入文字
+            obscureText: true,
+            decoration: InputDecoration(
+              labelText: '密码',
+              // hintText: '请输入密码',
+              helperText: '',
+            ),
+            onSaved: (value) {
+              password = value;
+            },
+            validator: _validatePassword,
+            autovalidate: _autoValidate,
+          ),
+          SizedBox(
+            height: 32.0,
+          ),
+          Container(
+            width: double.infinity,
+            child: RaisedButton(
+              color: Theme.of(context).accentColor,
+              child: Text(
+                "登录",
+                style: TextStyle(color: Colors.white),
+              ),
+              elevation: 0.5,
+              onPressed: _submitRegisterForm,
+            ),
+          ),
+        ],
       ),
-      //焦点变化或者文字变化会触发这个回调
-      //value表示文本框中的字符串
-      onChanged: (value) {
-        debugPrint('input:$value');
-      },
-      //点击虚拟键盘的确定按钮会触发这个回调
-      onSubmitted: (value) {
-        debugPrint('submit:$value');
-      },
     );
   }
 }
