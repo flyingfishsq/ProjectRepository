@@ -22,7 +22,7 @@ class _CheckBoxDemoState extends State<CheckBoxDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //含有checkBox的item
+            //含有checkBox的ListTile
             CheckboxListTile(
               value: _checkboxItemA,
               onChanged: (value) {

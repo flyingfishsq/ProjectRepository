@@ -1,9 +1,12 @@
 import 'package:F_Demo_1/demo/button_demo.dart';
 import 'package:F_Demo_1/demo/check_box_demo.dart';
+import 'package:F_Demo_1/demo/date_time_demo.dart';
 import 'package:F_Demo_1/demo/floating_action_button_demo.dart';
 import 'package:F_Demo_1/demo/form_demo.dart';
 import 'package:F_Demo_1/demo/popup_menu_demo.dart';
 import 'package:F_Demo_1/demo/radio_button_demo.dart';
+import 'package:F_Demo_1/demo/slider_demo.dart';
+import 'package:F_Demo_1/demo/switch_demo.dart';
 import 'package:flutter/material.dart';
 
 class MaterialComponents extends StatelessWidget {
@@ -19,32 +22,44 @@ class MaterialComponents extends StatelessWidget {
       body: ListView(
         children: [
           ListItem(
-            title: 'FloatingActionButton',
+            title: 'FloatingActionButton悬浮按钮',
             page: FloatingActionButtonDemo(),
           ),
           ListItem(
-            title: 'Button',
+            title: 'Button多种按钮',
             page: ButtonDemo(),
           ),
           ListItem(
-            title: 'Weiget',
+            title: 'Weiget部件',
             page: WeidgetDemo(),
           ),
           ListItem(
-            title: 'PopupMenu',
+            title: 'PopupMenu弹出框',
             page: PopupMenuDemo(),
           ),
           ListItem(
-            title: 'Form',
+            title: 'Form表单',
             page: FormDemo(),
           ),
           ListItem(
-            title: 'CheckBox',
+            title: 'CheckBox复选框',
             page: CheckBoxDemo(),
           ),
           ListItem(
-            title: 'RadioButton',
+            title: 'RadioButton单选按钮',
             page: RadioButtonDemo(),
+          ),
+          ListItem(
+            title: 'Switch开关按钮',
+            page: SwitchDemo(),
+          ),
+          ListItem(
+            title: 'Slider滑动控件',
+            page: SliderDemo(),
+          ),
+          ListItem(
+            title: 'DateTime时间选择控件',
+            page: DateTimeDemo(),
           ),
         ],
       ),
