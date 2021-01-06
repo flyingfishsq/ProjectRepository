@@ -1,6 +1,9 @@
 import 'package:F_Demo_1/demo/button_demo.dart';
+import 'package:F_Demo_1/demo/check_box_demo.dart';
 import 'package:F_Demo_1/demo/floating_action_button_demo.dart';
+import 'package:F_Demo_1/demo/form_demo.dart';
 import 'package:F_Demo_1/demo/popup_menu_demo.dart';
+import 'package:F_Demo_1/demo/radio_button_demo.dart';
 import 'package:flutter/material.dart';
 
 class MaterialComponents extends StatelessWidget {
@@ -16,7 +19,7 @@ class MaterialComponents extends StatelessWidget {
       body: ListView(
         children: [
           ListItem(
-            title: 'floatingActionButton',
+            title: 'FloatingActionButton',
             page: FloatingActionButtonDemo(),
           ),
           ListItem(
@@ -30,7 +33,19 @@ class MaterialComponents extends StatelessWidget {
           ListItem(
             title: 'PopupMenu',
             page: PopupMenuDemo(),
-          )
+          ),
+          ListItem(
+            title: 'Form',
+            page: FormDemo(),
+          ),
+          ListItem(
+            title: 'CheckBox',
+            page: CheckBoxDemo(),
+          ),
+          ListItem(
+            title: 'RadioButton',
+            page: RadioButtonDemo(),
+          ),
         ],
       ),
     );

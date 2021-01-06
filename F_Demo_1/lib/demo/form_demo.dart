@@ -6,6 +6,10 @@ class FormDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('FormDemo'),
+      ),
+
       //从main中的app中获取primaryColor
       // body: ThemeDemo(),
 
