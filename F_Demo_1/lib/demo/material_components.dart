@@ -1,3 +1,5 @@
+import 'package:F_Demo_1/demo/alert_dialog_demo.dart';
+import 'package:F_Demo_1/demo/bottom_sheet_demo.dart';
 import 'package:F_Demo_1/demo/button_demo.dart';
 import 'package:F_Demo_1/demo/check_box_demo.dart';
 import 'package:F_Demo_1/demo/date_time_demo.dart';
@@ -5,7 +7,9 @@ import 'package:F_Demo_1/demo/floating_action_button_demo.dart';
 import 'package:F_Demo_1/demo/form_demo.dart';
 import 'package:F_Demo_1/demo/popup_menu_demo.dart';
 import 'package:F_Demo_1/demo/radio_button_demo.dart';
+import 'package:F_Demo_1/demo/simple_dialog_demo.dart';
 import 'package:F_Demo_1/demo/slider_demo.dart';
+import 'package:F_Demo_1/demo/snack_bar_demo.dart';
 import 'package:F_Demo_1/demo/switch_demo.dart';
 import 'package:flutter/material.dart';
 
@@ -30,8 +34,8 @@ class MaterialComponents extends StatelessWidget {
             page: ButtonDemo(),
           ),
           ListItem(
-            title: 'Weiget部件',
-            page: WeidgetDemo(),
+            title: 'Widget部件',
+            page: WidgetDemo(),
           ),
           ListItem(
             title: 'PopupMenu弹出框',
@@ -61,6 +65,22 @@ class MaterialComponents extends StatelessWidget {
             title: 'DateTime时间选择控件',
             page: DateTimeDemo(),
           ),
+          ListItem(
+            title: 'SimpleDialog对话框控件',
+            page: SimpleDialogDemo(),
+          ),
+          ListItem(
+            title: 'AlertDialog对话框控件',
+            page: AlertDialogDemo(),
+          ),
+          ListItem(
+            title: 'BottomSheet底部表单控件',
+            page: BottomSheetDemo(),
+          ),
+          ListItem(
+            title: 'SnackBar底部通知控件',
+            page: SnackBarDemo(),
+          ),
         ],
       ),
     );
@@ -85,14 +105,14 @@ class ListItem extends StatelessWidget {
   }
 }
 
-class WeidgetDemo extends StatelessWidget {
-  const WeidgetDemo({Key key}) : super(key: key);
+class WidgetDemo extends StatelessWidget {
+  const WidgetDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('WeigetDemo'),
+        title: Text('WidgetDemo'),
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
