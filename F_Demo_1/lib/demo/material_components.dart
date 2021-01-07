@@ -3,6 +3,7 @@ import 'package:F_Demo_1/demo/bottom_sheet_demo.dart';
 import 'package:F_Demo_1/demo/button_demo.dart';
 import 'package:F_Demo_1/demo/check_box_demo.dart';
 import 'package:F_Demo_1/demo/date_time_demo.dart';
+import 'package:F_Demo_1/demo/expansion_panel_demo.dart';
 import 'package:F_Demo_1/demo/floating_action_button_demo.dart';
 import 'package:F_Demo_1/demo/form_demo.dart';
 import 'package:F_Demo_1/demo/popup_menu_demo.dart';
@@ -81,6 +82,11 @@ class MaterialComponents extends StatelessWidget {
             title: 'SnackBar底部通知控件',
             page: SnackBarDemo(),
           ),
+          ListItem(
+            title: 'ExpansionPanelDemo展开控件',
+            page: ExpansionPanelDemo(),
+          ),
+          
         ],
       ),
     );

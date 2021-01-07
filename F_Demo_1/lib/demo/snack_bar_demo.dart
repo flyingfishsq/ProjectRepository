@@ -22,7 +22,7 @@ class _SnackBarDemoState extends State<SnackBarDemo> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SnackBarBotton(),
+                SnackBarButton(),
               ],
             ),
           ],
@@ -32,8 +32,8 @@ class _SnackBarDemoState extends State<SnackBarDemo> {
   }
 }
 
-class SnackBarBotton extends StatelessWidget {
-  const SnackBarBotton({Key key}) : super(key: key);
+class SnackBarButton extends StatelessWidget {
+  const SnackBarButton({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
