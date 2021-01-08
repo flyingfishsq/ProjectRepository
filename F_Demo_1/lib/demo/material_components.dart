@@ -2,6 +2,7 @@ import 'package:F_Demo_1/demo/alert_dialog_demo.dart';
 import 'package:F_Demo_1/demo/bottom_sheet_demo.dart';
 import 'package:F_Demo_1/demo/button_demo.dart';
 import 'package:F_Demo_1/demo/check_box_demo.dart';
+import 'package:F_Demo_1/demo/chip_demo.dart';
 import 'package:F_Demo_1/demo/date_time_demo.dart';
 import 'package:F_Demo_1/demo/expansion_panel_demo.dart';
 import 'package:F_Demo_1/demo/floating_action_button_demo.dart';
@@ -86,7 +87,10 @@ class MaterialComponents extends StatelessWidget {
             title: 'ExpansionPanelDemo展开控件',
             page: ExpansionPanelDemo(),
           ),
-          
+          ListItem(
+            title: 'ChipDemo标签控件',
+            page: ChipDemo(),
+          ),
         ],
       ),
     );
