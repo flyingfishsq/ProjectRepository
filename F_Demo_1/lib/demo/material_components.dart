@@ -8,6 +8,7 @@ import 'package:F_Demo_1/demo/date_time_demo.dart';
 import 'package:F_Demo_1/demo/expansion_panel_demo.dart';
 import 'package:F_Demo_1/demo/floating_action_button_demo.dart';
 import 'package:F_Demo_1/demo/form_demo.dart';
+import 'package:F_Demo_1/demo/paginated_data_table_demo.dart';
 import 'package:F_Demo_1/demo/popup_menu_demo.dart';
 import 'package:F_Demo_1/demo/radio_button_demo.dart';
 import 'package:F_Demo_1/demo/simple_dialog_demo.dart';
@@ -85,16 +86,20 @@ class MaterialComponents extends StatelessWidget {
             page: SnackBarDemo(),
           ),
           ListItem(
-            title: '15. ExpansionPanelDemo展开控件',
+            title: '15. ExpansionPanel展开控件',
             page: ExpansionPanelDemo(),
           ),
           ListItem(
-            title: '16. ChipDemo标签控件',
+            title: '16. Chip标签控件',
             page: ChipDemo(),
           ),
           ListItem(
-            title: '17. DataTableDemo表格控件',
+            title: '17. DataTable表格控件',
             page: DataTableDemo(),
+          ),
+          ListItem(
+            title: '17. PaginatedDataTable可分页表格控件',
+            page: PaginatedDataTableDemo(),
           ),
         ],
       ),
