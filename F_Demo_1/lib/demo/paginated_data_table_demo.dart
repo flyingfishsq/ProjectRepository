@@ -42,20 +42,22 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
                   //   // width: 150.0,
                   // ),
                   label: Text('Title'),
-                  onSort: (int index, bool ascending) {
+                  onSort: (int columnIndex, bool ascending) {
+                    _postDataSource._sort();
+
                     setState(() {
-                      _sortColumnIndex = index;
+                      _sortColumnIndex = columnIndex;
                       _sortAscending = ascending;
 
-                      posts.sort((a, b) {
-                        if (!ascending) {
-                          final c = a;
-                          a = b;
-                          b = c;
-                        }
-                        //比较a和b的标题长度
-                        return a.title.length.compareTo(b.title.length);
-                      });
+                      // posts.sort((a, b) {
+                      //   if (!ascending) {
+                      //     final c = a;
+                      //     a = b;
+                      //     b = c;
+                      //   }
+                      //   //比较a和b的标题长度
+                      //   return a.title.length.compareTo(b.title.length);
+                      // });
                     });
                   },
                 ),
