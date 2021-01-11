@@ -43,7 +43,9 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
                   // ),
                   label: Text('Title'),
                   onSort: (int columnIndex, bool ascending) {
-                    _postDataSource._sort();
+                    //方法传入两个参数，第一个参数是一个方法
+                    _postDataSource._sort(
+                        (post) => post.title.length, ascending);
 
                     setState(() {
                       _sortColumnIndex = columnIndex;
@@ -98,5 +100,22 @@ class PostDataSource extends DataTableSource {
       DataCell(Text(post.author)),
       DataCell(Image.network(post.imageUrl)),
     ], index: index);
+  }
+
+//注意这个比较方法
+  void _sort(getField(post), bool ascending) {
+    _posts.sort((a, b) {
+      if (!ascending) {
+        final c = a;
+        a = b;
+        b = c;
+      }
+      final aValue = getField(a);
+      final bValue = getField(b);
+
+      return Comparable.compare(aValue, bValue);
+    });
+
+    notifyListeners();
   }
 }

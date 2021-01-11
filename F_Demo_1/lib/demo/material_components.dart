@@ -1,6 +1,7 @@
 import 'package:F_Demo_1/demo/alert_dialog_demo.dart';
 import 'package:F_Demo_1/demo/bottom_sheet_demo.dart';
 import 'package:F_Demo_1/demo/button_demo.dart';
+import 'package:F_Demo_1/demo/card_demo.dart';
 import 'package:F_Demo_1/demo/check_box_demo.dart';
 import 'package:F_Demo_1/demo/chip_demo.dart';
 import 'package:F_Demo_1/demo/data_table_demo.dart';
@@ -14,6 +15,7 @@ import 'package:F_Demo_1/demo/radio_button_demo.dart';
 import 'package:F_Demo_1/demo/simple_dialog_demo.dart';
 import 'package:F_Demo_1/demo/slider_demo.dart';
 import 'package:F_Demo_1/demo/snack_bar_demo.dart';
+import 'package:F_Demo_1/demo/stepper_demo.dart';
 import 'package:F_Demo_1/demo/switch_demo.dart';
 import 'package:flutter/material.dart';
 
@@ -100,6 +102,14 @@ class MaterialComponents extends StatelessWidget {
           ListItem(
             title: '17. PaginatedDataTable可分页表格控件',
             page: PaginatedDataTableDemo(),
+          ),
+          ListItem(
+            title: '17. Card卡片控件',
+            page: CardDemo(),
+          ),
+          ListItem(
+            title: '18. Stepper步骤控件',
+            page: StepperDemo(),
           ),
         ],
       ),
