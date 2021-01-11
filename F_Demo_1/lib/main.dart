@@ -6,6 +6,7 @@ import 'package:F_Demo_1/demo/listview_demo.dart';
 import 'package:F_Demo_1/demo/basic_demo.dart';
 import 'package:F_Demo_1/demo/material_components.dart';
 import 'package:F_Demo_1/demo/sliver_demo.dart';
+import 'package:F_Demo_1/demo/state/state_management_demo.dart';
 import 'package:F_Demo_1/demo/view_demo.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +50,8 @@ class App extends StatelessWidget {
       //可以试试这个
       // initialRoute: '/about',
       // initialRoute: '/form',
-      initialRoute: '/mdc',
+      // initialRoute: '/mdc',
+      initialRoute: '/state-management',
       routes: {
         //斜线表示路由的根（初始路由），当前的根表示home中显示的那个界面
         //如果不用这个home，可以屏蔽home，然后设置initialRoute
@@ -58,6 +60,7 @@ class App extends StatelessWidget {
         '/about': (context) => MyPage(title: "关于"),
         '/form': (context) => FormDemo(),
         '/mdc': (context) => MaterialComponents(),
+        '/state-management': (context) => StateManagementDemo(),
       },
       //界面跳转的学习-路由
 
