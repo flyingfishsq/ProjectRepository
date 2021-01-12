@@ -29,6 +29,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 //用来管理Stream
   StreamController<String> _streamController;
 
+  StreamSink _streamSink;
+
+  String _data = '...';
+
 //StreamController不使用的时候要关掉
   @override
   void dispose() {
@@ -45,6 +49,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     //使用StreamController
     // Stream<String> _streamDemo = Stream.fromFuture(fetchData());
     _streamController = StreamController<String>();
+    _streamSink = _streamController.sink;
 
     print('Start listening on a stream.');
     //观察者模式，等待主题传来数据，这个方法返回的就是一个subscription，可以用来暂停，恢复，取消监听（取消订阅）
@@ -62,6 +67,9 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   }
 
   void onData(String data) {
+    setState(() {
+      _data = data;
+    });
     print('$data');
   }
 
@@ -92,7 +100,9 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     print('add data to stream...');
 
     String data = await fetchData();
-    _streamController.add(data);
+    // _streamController.add(data);
+    //使用StreamSink添加数据
+    _streamSink.add(data);
   }
 
   Future<String> fetchData() async {
@@ -106,27 +116,41 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FlatButton(
-              onPressed: _pauseStream,
-              child: Text('Pause'),
-            ),
-            FlatButton(
-              onPressed: _resumeStream,
-              child: Text('Resume'),
-            ),
-            FlatButton(
-              onPressed: _cancelStream,
-              child: Text('Cancel'),
-            ),
-            FlatButton(
-              onPressed: _addDataToStream,
-              child: Text(
-                'Add',
-                style: TextStyle(color: Colors.red),
-              ),
+            Text(_data),
+            //使用StreamBuilder省去setState()
+            // StreamBuilder(
+            //   initialData: '...',
+            //   builder: (context, snapshot) {
+            //     return Text('${snapshot.data}');
+            //   },
+            //   stream: _streamController.stream,
+            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FlatButton(
+                  onPressed: _pauseStream,
+                  child: Text('Pause'),
+                ),
+                FlatButton(
+                  onPressed: _resumeStream,
+                  child: Text('Resume'),
+                ),
+                FlatButton(
+                  onPressed: _cancelStream,
+                  child: Text('Cancel'),
+                ),
+                FlatButton(
+                  onPressed: _addDataToStream,
+                  child: Text(
+                    'Add',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
