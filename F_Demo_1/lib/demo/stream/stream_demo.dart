@@ -88,7 +88,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     _streamSubscription.cancel();
   }
 
-  void _addStream() async {
+  void _addDataToStream() async {
     print('add data to stream...');
 
     String data = await fetchData();
@@ -122,8 +122,11 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
               child: Text('Cancel'),
             ),
             FlatButton(
-              onPressed: _addStream,
-              child: Text('add'),
+              onPressed: _addDataToStream,
+              child: Text(
+                'Add',
+                style: TextStyle(color: Colors.red),
+              ),
             ),
           ],
         ),
