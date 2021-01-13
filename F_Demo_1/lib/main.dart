@@ -5,6 +5,7 @@ import 'package:F_Demo_1/demo/layout_demo.dart';
 import 'package:F_Demo_1/demo/listview_demo.dart';
 import 'package:F_Demo_1/demo/basic_demo.dart';
 import 'package:F_Demo_1/demo/material_components.dart';
+import 'package:F_Demo_1/demo/rxdart/rxdart_demo.dart';
 import 'package:F_Demo_1/demo/sliver_demo.dart';
 import 'package:F_Demo_1/demo/state/state_management_demo.dart';
 import 'package:F_Demo_1/demo/stream/stream_demo.dart';
@@ -53,7 +54,8 @@ class App extends StatelessWidget {
       // initialRoute: '/form',
       // initialRoute: '/mdc',
       // initialRoute: '/state-management',
-      initialRoute: '/stream',
+      // initialRoute: '/stream',
+      initialRoute: '/rxdart',
       routes: {
         //斜线表示路由的根（初始路由），当前的根表示home中显示的那个界面
         //如果不用这个home，可以屏蔽home，然后设置initialRoute
@@ -64,6 +66,7 @@ class App extends StatelessWidget {
         '/mdc': (context) => MaterialComponents(),
         '/state-management': (context) => StateManagementDemo(),
         '/stream': (context) => StreamDemo(),
+        '/rxdart': (context) => RxDartDemo(),
       },
       //界面跳转的学习-路由
 
