@@ -95,8 +95,7 @@ class _HttpDemoHomeState extends State<HttpDemoHome> {
           return Center(
             child: Text('loading...'),
           );
-        }
-        if (snapshot.connectionState == ConnectionState.done) {
+        } else if (snapshot.connectionState == ConnectionState.done) {
           return ListView(
             children: snapshot.data.map<Widget>((item) {
               return ListTile(
