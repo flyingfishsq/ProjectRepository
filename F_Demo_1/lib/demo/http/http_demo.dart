@@ -96,17 +96,23 @@ class _HttpDemoHomeState extends State<HttpDemoHome> {
             child: Text('loading...'),
           );
         }
-        return ListView(
-          children: snapshot.data.map<Widget>((item) {
-            return ListTile(
-              title: Text(item.title),
-              subtitle: Text(item.author),
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(item.imageUrl),
-              ),
-            );
-          }).toList(),
-        );
+        if (snapshot.connectionState == ConnectionState.done) {
+          return ListView(
+            children: snapshot.data.map<Widget>((item) {
+              return ListTile(
+                title: Text(item.title),
+                subtitle: Text(item.author),
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(item.imageUrl),
+                ),
+              );
+            }).toList(),
+          );
+        } else {
+          return Center(
+            child: Text('error...'),
+          );
+        }
       },
     );
   }
