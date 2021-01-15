@@ -1,3 +1,4 @@
+import 'package:F_Demo_1/demo/animation/animation_demo.dart';
 import 'package:F_Demo_1/demo/bloc/bolc_demo.dart';
 import 'package:F_Demo_1/demo/bottom_navigation_bar_demo.dart';
 import 'package:F_Demo_1/demo/drawer_demo.dart';
@@ -59,7 +60,8 @@ class App extends StatelessWidget {
       // initialRoute: '/stream',
       // initialRoute: '/rxdart',
       // initialRoute: '/bloc',
-      initialRoute: '/http',
+      // initialRoute: '/http',
+      initialRoute: '/animation',
       routes: {
         //斜线表示路由的根（初始路由），当前的根表示home中显示的那个界面
         //如果不用这个home，可以屏蔽home，然后设置initialRoute
@@ -73,6 +75,7 @@ class App extends StatelessWidget {
         '/rxdart': (context) => RxDartDemo(),
         '/bloc': (context) => BolcDemo(),
         '/http': (context) => HttpDemo(),
+        '/animation': (context) => AnimationDemo(),
       },
       //界面跳转的学习-路由
 

@@ -99,10 +99,16 @@ class _HttpDemoHomeState extends State<HttpDemoHome> {
           return ListView(
             children: snapshot.data.map<Widget>((item) {
               return ListTile(
-                title: Text(item.title),
-                subtitle: Text(item.author),
+                title: Text(
+                  item.title,
+                ),
+                subtitle: Text(
+                  item.author,
+                ),
                 leading: CircleAvatar(
-                  backgroundImage: NetworkImage(item.imageUrl),
+                  backgroundImage: NetworkImage(
+                    item.imageUrl,
+                  ),
                 ),
               );
             }).toList(),
