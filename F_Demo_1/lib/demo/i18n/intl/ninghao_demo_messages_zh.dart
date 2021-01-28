@@ -27,25 +27,3 @@ class MessageLookup extends MessageLookupByLibrary {
         "title": MessageLookupByLibrary.simpleMessage("您好")
       };
 }
-
-class NingHaoDemoLocalizationsDelegate
-    extends LocalizationsDelegate<NingHaoDemoLocalizations> {
-  NingHaoDemoLocalizationsDelegate();
-
-  @override
-  bool isSupported(Locale locale) {
-    return true;
-  }
-
-  @override
-  Future<NingHaoDemoLocalizations> load(Locale locale) {
-    return SynchronousFuture<NingHaoDemoLocalizations>(
-        NingHaoDemoLocalizations(locale));
-  }
-
-  @override
-  bool shouldReload(
-      covariant LocalizationsDelegate<NingHaoDemoLocalizations> old) {
-    return false;
-  }
-}
