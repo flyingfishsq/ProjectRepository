@@ -1,3 +1,4 @@
+import 'package:F_Demo_1/demo/i18n/intl/ninghao_demo_localizations.dart';
 import 'package:flutter/material.dart';
 
 class I18nDemo extends StatelessWidget {
@@ -20,6 +21,12 @@ class I18nDemo extends StatelessWidget {
             ),
             Text(
               '${locale.toString()}',
+            ),
+            Text(
+              // Localizations.of(context, NingHaoDemoLocalizations).title,
+              // NingHaoDemoLocalizations.of(context).title,
+              NingHaoDemoLocalizations.of(context).greet('张三'),
+              style: Theme.of(context).textTheme.title,
             ),
           ],
         ),

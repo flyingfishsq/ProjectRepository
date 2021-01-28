@@ -5,6 +5,7 @@ import 'package:F_Demo_1/demo/drawer_demo.dart';
 import 'package:F_Demo_1/demo/form_demo.dart';
 import 'package:F_Demo_1/demo/http/http_demo.dart';
 import 'package:F_Demo_1/demo/i18n/i18n_demo.dart';
+import 'package:F_Demo_1/demo/i18n/intl/ninghao_demo_localizations.dart';
 import 'package:F_Demo_1/demo/layout_demo.dart';
 import 'package:F_Demo_1/demo/listview_demo.dart';
 import 'package:F_Demo_1/demo/basic_demo.dart';
@@ -36,11 +37,20 @@ class App extends StatelessWidget {
     // );
     return MaterialApp(
       //设置默认的Locale
+      // locale: Locale(
+      //   'en',
+      //   'US',
+      // ),
+      // localeResolutionCallback:
+      //     (Locale locale, Iterable<Locale> supportedLocales) {
+      //   return Locale('en', 'US');
+      // },
       locale: Locale(
-        'en',
-        'US',
+        'zh',
+        'CN',
       ),
       localizationsDelegates: [
+        NingHaoDemoLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
