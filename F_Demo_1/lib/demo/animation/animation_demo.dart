@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimationDemo extends StatelessWidget {
-  const AnimationDemo({Key key}) : super(key: key);
+  const AnimationDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class AnimationDemo extends StatelessWidget {
 }
 
 class AnimationDemoHome extends StatefulWidget {
-  AnimationDemoHome({Key key}) : super(key: key);
+  AnimationDemoHome({Key? key}) : super(key: key);
 
   @override
   _AnimationDemoHomeState createState() => _AnimationDemoHomeState();
@@ -24,10 +24,10 @@ class AnimationDemoHome extends StatefulWidget {
 //注意这里的with
 class _AnimationDemoHomeState extends State<AnimationDemoHome>
     with TickerProviderStateMixin {
-  AnimationController animationController;
-  Animation animation;
-  Animation animationColor;
-  CurvedAnimation curve;
+  late AnimationController animationController;
+  late Animation animation;
+  late Animation animationColor;
+  late CurvedAnimation curve;
 
   @override
   void initState() {
@@ -115,8 +115,8 @@ class AnimatedHeart extends AnimatedWidget {
   final AnimationController controller;
 
   AnimatedHeart({
-    this.animations,
-    this.controller,
+    required this.animations,
+    required this.controller,
   }) : super(listenable: controller);
 
   @override

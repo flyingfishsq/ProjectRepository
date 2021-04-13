@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DrawerDemo extends StatelessWidget {
-  const DrawerDemo({Key key}) : super(key: key);
+  const DrawerDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class DrawerDemo extends StatelessWidget {
                   fit: BoxFit.cover,
                   //混合效果
                   colorFilter: ColorFilter.mode(
-                      Colors.blue[600].withOpacity(0.2), BlendMode.srcOver)),
+                      Colors.blue[600]!.withOpacity(0.2), BlendMode.srcOver)),
             ),
           ),
           ListTile(

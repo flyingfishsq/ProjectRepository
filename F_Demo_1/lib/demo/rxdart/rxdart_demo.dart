@@ -3,7 +3,7 @@ import 'package:rxdart/rxdart.dart';
 import 'dart:async';
 
 class RxDartDemo extends StatelessWidget {
-  const RxDartDemo({Key key}) : super(key: key);
+  const RxDartDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +17,14 @@ class RxDartDemo extends StatelessWidget {
 }
 
 class RxDartDemoHome extends StatefulWidget {
-  RxDartDemoHome({Key key}) : super(key: key);
+  RxDartDemoHome({Key? key}) : super(key: key);
 
   @override
   _RxDartDemoHomeState createState() => _RxDartDemoHomeState();
 }
 
 class _RxDartDemoHomeState extends State<RxDartDemoHome> {
-  PublishSubject<String> _textFieldSubject;
+  late PublishSubject<String> _textFieldSubject;
 
   @override
   void initState() {

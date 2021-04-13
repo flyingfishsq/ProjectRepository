@@ -2,7 +2,7 @@ import 'package:F_Demo_1/model/post.dart';
 import 'package:flutter/material.dart';
 
 class DataTableDemo extends StatefulWidget {
-  DataTableDemo({Key key}) : super(key: key);
+  DataTableDemo({Key? key}) : super(key: key);
 
   @override
   _DataTableDemoState createState() => _DataTableDemoState();

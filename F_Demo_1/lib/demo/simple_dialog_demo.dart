@@ -12,7 +12,7 @@ enum Option {
 }
 
 class SimpleDialogDemo extends StatefulWidget {
-  SimpleDialogDemo({Key key}) : super(key: key);
+  SimpleDialogDemo({Key? key}) : super(key: key);
 
   @override
   _SimpleDialogDemoState createState() => _SimpleDialogDemoState();

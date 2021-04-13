@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BottomSheetDemo extends StatefulWidget {
-  BottomSheetDemo({Key key}) : super(key: key);
+  BottomSheetDemo({Key? key}) : super(key: key);
 
   @override
   _BottomSheetDemoState createState() => _BottomSheetDemoState();
@@ -11,7 +11,7 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
   final _bottomSheetScafflodKey = GlobalKey<ScaffoldState>();
 
   _showBottomSheet() {
-    _bottomSheetScafflodKey.currentState.showBottomSheet((context) {
+    _bottomSheetScafflodKey.currentState!.showBottomSheet((context) {
       return BottomAppBar(
         child: Container(
           height: 90.0,

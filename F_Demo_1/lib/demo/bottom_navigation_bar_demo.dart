@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
 class BottomNavigationBar_Demo extends StatefulWidget {
-  BottomNavigationBar_Demo({Key key}) : super(key: key);
+  BottomNavigationBar_Demo({Key? key}) : super(key: key);
 
   @override
   _BottomNavigationBar_DemoState createState() =>

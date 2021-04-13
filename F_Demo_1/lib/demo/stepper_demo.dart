@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StepperDemo extends StatefulWidget {
-  StepperDemo({Key key}) : super(key: key);
+  StepperDemo({Key? key}) : super(key: key);
 
   @override
   _StepperDemoState createState() => _StepperDemoState();

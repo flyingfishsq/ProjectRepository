@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'counter_bloc_home.dart';
 
 class BolcDemo extends StatelessWidget {
-  const BolcDemo({Key key}) : super(key: key);
+  const BolcDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

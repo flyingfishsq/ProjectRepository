@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PageViewDemo extends StatelessWidget {
-  const PageViewDemo({Key key}) : super(key: key);
+  const PageViewDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,11 @@ class Post {
   final String title, author, imageUrl, description;
 
 //注意构造方法的定义
-  Post({this.title, this.author, this.imageUrl, this.description});
+  Post(
+      {required this.title,
+      required this.author,
+      required this.imageUrl,
+      required this.description});
 
   bool selected = false;
 }

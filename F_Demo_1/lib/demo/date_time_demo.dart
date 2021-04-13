@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class DateTimeDemo extends StatefulWidget {
-  DateTimeDemo({Key key}) : super(key: key);
+  DateTimeDemo({Key? key}) : super(key: key);
 
   @override
   _DateTimeDemoState createState() => _DateTimeDemoState();
@@ -11,15 +11,15 @@ class DateTimeDemo extends StatefulWidget {
 class _DateTimeDemoState extends State<DateTimeDemo> {
   DateTime selectedDate = DateTime.now();
 
-  TimeOfDay selectedTime = TimeOfDay(hour:9,minute: 30);
+  TimeOfDay selectedTime = TimeOfDay(hour: 9, minute: 30);
 
   //不加async会报错
   Future<void> _selectDate() async {
-    final DateTime date = await showDatePicker(
+    final DateTime date = (await showDatePicker(
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(1970),
-        lastDate: DateTime(2050));
+        lastDate: DateTime(2050)))!;
 
     //这里表示用户点击了cancel按钮
     if (date == null) return;
@@ -30,14 +30,15 @@ class _DateTimeDemoState extends State<DateTimeDemo> {
   }
 
   Future<void> _selectTime() async {
-   final TimeOfDay time = await showTimePicker(context: context, initialTime: selectedTime);
+    final TimeOfDay time =
+        (await showTimePicker(context: context, initialTime: selectedTime))!;
 
-   //这里表示用户点击了cancel按钮
-   if(time == null)return;
+    //这里表示用户点击了cancel按钮
+    if (time == null) return;
 
-   setState(() {
-     selectedTime = time;
-   });
+    setState(() {
+      selectedTime = time;
+    });
   }
 
   @override

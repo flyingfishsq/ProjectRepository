@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TextFieldDemo extends StatefulWidget {
-  TextFieldDemo({Key key}) : super(key: key);
+  TextFieldDemo({Key? key}) : super(key: key);
 
   @override
   _TextFieldDemoState createState() => _TextFieldDemoState();

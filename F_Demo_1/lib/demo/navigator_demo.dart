@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NavigatorDemo extends StatelessWidget {
-  const NavigatorDemo({Key key}) : super(key: key);
+  const NavigatorDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class NavigatorDemo extends StatelessWidget {
 
 class MyPage extends StatelessWidget {
   final String title;
-  const MyPage({this.title, Key key}) : super(key: key);
+  const MyPage({required this.title, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:F_Demo_1/model/post.dart';
 
 class PaginatedDataTableDemo extends StatefulWidget {
-  PaginatedDataTableDemo({Key key}) : super(key: key);
+  PaginatedDataTableDemo({Key? key}) : super(key: key);
 
   @override
   _PaginatedDataTableDemoState createState() => _PaginatedDataTableDemoState();
 }
 
 class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
-  int _sortColumnIndex;
+  late int _sortColumnIndex;
   bool _sortAscending = true;
 
   final PostDataSource _postDataSource = PostDataSource();

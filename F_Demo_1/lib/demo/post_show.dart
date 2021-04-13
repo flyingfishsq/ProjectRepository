@@ -4,7 +4,7 @@ import 'package:F_Demo_1/model/post.dart';
 class PostShow extends StatelessWidget {
   final Post post;
 
-  const PostShow({@required this.post, Key key}) : super(key: key);
+  const PostShow({required this.post, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

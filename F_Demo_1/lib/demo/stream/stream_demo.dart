@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class StreamDemo extends StatelessWidget {
-  const StreamDemo({Key key}) : super(key: key);
+  const StreamDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +17,19 @@ class StreamDemo extends StatelessWidget {
 }
 
 class StreamDemoHome extends StatefulWidget {
-  StreamDemoHome({Key key}) : super(key: key);
+  StreamDemoHome({Key? key}) : super(key: key);
 
   @override
   _StreamDemoHomeState createState() => _StreamDemoHomeState();
 }
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
-  StreamSubscription _streamSubscription;
+  late StreamSubscription _streamSubscription;
 
 //用来管理Stream
-  StreamController<String> _streamController;
+  late StreamController<String> _streamController;
 
-  StreamSink _streamSink;
+  late StreamSink _streamSink;
 
   String _data = '...';
 

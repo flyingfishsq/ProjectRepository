@@ -27,7 +27,7 @@ void main() {
 
 //StatelessWidget(不需要修改数据的小部件)与StatefulWidget(需要修改数据的小部件)
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +126,7 @@ class App extends StatelessWidget {
 
 //主要展示了AppBar，NavigationBar，TabBar的使用
 class Home extends StatelessWidget {
-  const Home({Key key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

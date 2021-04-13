@@ -20,7 +20,7 @@ import 'package:F_Demo_1/demo/switch_demo.dart';
 import 'package:flutter/material.dart';
 
 class MaterialComponents extends StatelessWidget {
-  const MaterialComponents({Key key}) : super(key: key);
+  const MaterialComponents({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +118,8 @@ class MaterialComponents extends StatelessWidget {
 }
 
 class ListItem extends StatelessWidget {
-  const ListItem({this.title, this.page, key}) : super(key: key);
+  const ListItem({required this.title, required this.page, key})
+      : super(key: key);
 
   final String title;
   final Widget page;
@@ -136,7 +137,7 @@ class ListItem extends StatelessWidget {
 }
 
 class WidgetDemo extends StatelessWidget {
-  const WidgetDemo({Key key}) : super(key: key);
+  const WidgetDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

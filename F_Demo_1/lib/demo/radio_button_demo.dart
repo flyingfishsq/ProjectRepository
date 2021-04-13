@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 //单选按钮，具有自身单个的值，也有一组按钮的群组值
 class RadioButtonDemo extends StatefulWidget {
-  RadioButtonDemo({Key key}) : super(key: key);
+  RadioButtonDemo({Key? key}) : super(key: key);
 
   @override
   _RadioButtonDemoState createState() => _RadioButtonDemoState();

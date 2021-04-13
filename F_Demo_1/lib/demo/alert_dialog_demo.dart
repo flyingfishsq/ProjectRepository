@@ -6,7 +6,7 @@ enum Action {
 }
 
 class AlertDialogDemo extends StatefulWidget {
-  AlertDialogDemo({Key key}) : super(key: key);
+  AlertDialogDemo({Key? key}) : super(key: key);
 
   @override
   _AlertDialogDemoState createState() => _AlertDialogDemoState();
