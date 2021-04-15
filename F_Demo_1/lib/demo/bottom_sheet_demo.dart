@@ -8,10 +8,10 @@ class BottomSheetDemo extends StatefulWidget {
 }
 
 class _BottomSheetDemoState extends State<BottomSheetDemo> {
-  final _bottomSheetScafflodKey = GlobalKey<ScaffoldState>();
+  final _bottomSheetScaffoldKey = GlobalKey<ScaffoldState>();
 
   _showBottomSheet() {
-    _bottomSheetScafflodKey.currentState!.showBottomSheet((context) {
+    _bottomSheetScaffoldKey.currentState!.showBottomSheet((context) {
       return BottomAppBar(
         child: Container(
           height: 90.0,
@@ -93,7 +93,7 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _bottomSheetScafflodKey,
+      key: _bottomSheetScaffoldKey,
       appBar: AppBar(
         title: Text('BottomSheetDemo'),
       ),
