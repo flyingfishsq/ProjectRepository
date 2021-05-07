@@ -9,7 +9,9 @@ class _TravelPageState extends State<TravelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('旅拍'),
+      body: Center(
+        child: Text('旅拍'),
+      ),
     );
   }
 }
