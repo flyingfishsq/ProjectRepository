@@ -24,7 +24,7 @@ class _DataTableDemoState extends State<DataTableDemo> {
           children: [
             DataTable(
               //定制全选状态
-              onSelectAll: (bool value) {},
+              onSelectAll: (bool? value) {},
               //用来作为排序的列序号
               sortColumnIndex: _sortColumnIndex,
               //未真表示升序排列，为假表示降序排列
@@ -85,10 +85,10 @@ class _DataTableDemoState extends State<DataTableDemo> {
               rows: posts.map((post) {
                 return DataRow(
                   selected: post.selected,
-                  onSelectChanged: (bool value) {
+                  onSelectChanged: (bool? value) {
                     setState(() {
                       if (post.selected != value) {
-                        post.selected = value;
+                        post.selected = value!;
                       }
                     });
                   },

@@ -29,7 +29,7 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
               rowsPerPage: 5,
               source: _postDataSource,
               //定制全选状态
-              onSelectAll: (bool value) {},
+              onSelectAll: (bool? value) {},
               //用来作为排序的列序号
               sortColumnIndex: _sortColumnIndex,
               //未真表示升序排列，为假表示降序排列
