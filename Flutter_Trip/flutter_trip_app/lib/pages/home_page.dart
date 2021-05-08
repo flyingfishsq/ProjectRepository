@@ -8,6 +8,7 @@ class HomePage extends StatefulWidget {
 
 //const常量只能定义在静态代码区内
 const double APPBAR_SCROLL_MAX = 100.0;
+const HOME_PAGE_URL = 'https://www.devio.org/io/flutter_app/json/home_page.json';
 
 class _HomePageState extends State<HomePage> {
   List<String> _imgUrls = [
