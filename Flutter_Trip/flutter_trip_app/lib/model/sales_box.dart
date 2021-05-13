@@ -21,27 +21,29 @@ class SalesBox {
       this.moreUrl});
 
   factory SalesBox.fromJson(Map<String, dynamic> json) {
-    return SalesBox(
-        bigCard1: json['bigCard1'] != null
-            ? CommonModel.fromJson(json['bigCard1'])
-            : null,
-        bigCard2: json['bigCard2'] != null
-            ? CommonModel.fromJson(json['bigCard2'])
-            : null,
-        smallCard1: json['smallCard1'] != null
-            ? CommonModel.fromJson(json['smallCard1'])
-            : null,
-        smallCard2: json['smallCard2'] != null
-            ? CommonModel.fromJson(json['smallCard2'])
-            : null,
-        smallCard3: json['smallCard3'] != null
-            ? CommonModel.fromJson(json['smallCard3'])
-            : null,
-        smallCard4: json['smallCard4'] != null
-            ? CommonModel.fromJson(json['smallCard4'])
-            : null,
-        icon: json['icon'],
-        moreUrl: json['moreUrl']);
+    return json != null
+        ? SalesBox(
+            bigCard1: json['bigCard1'] != null
+                ? CommonModel.fromJson(json['bigCard1'])
+                : null,
+            bigCard2: json['bigCard2'] != null
+                ? CommonModel.fromJson(json['bigCard2'])
+                : null,
+            smallCard1: json['smallCard1'] != null
+                ? CommonModel.fromJson(json['smallCard1'])
+                : null,
+            smallCard2: json['smallCard2'] != null
+                ? CommonModel.fromJson(json['smallCard2'])
+                : null,
+            smallCard3: json['smallCard3'] != null
+                ? CommonModel.fromJson(json['smallCard3'])
+                : null,
+            smallCard4: json['smallCard4'] != null
+                ? CommonModel.fromJson(json['smallCard4'])
+                : null,
+            icon: json['icon'],
+            moreUrl: json['moreUrl'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {

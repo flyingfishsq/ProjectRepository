@@ -8,15 +8,18 @@ class GridNav {
   GridNav({this.flight, this.hotel, this.travel});
 
   factory GridNav.fromJson(Map<String, dynamic> json) {
-    return GridNav(
-        flight: json['flight'] != null
-            ? GridNavModel.fromJson(json['flight'])
-            : null,
-        hotel:
-            json['hotel'] != null ? GridNavModel.fromJson(json['hotel']) : null,
-        travel: json['travel'] != null
-            ? GridNavModel.fromJson(json['travel'])
-            : null);
+    return json != null
+        ? GridNav(
+            flight: json['flight'] != null
+                ? GridNavModel.fromJson(json['flight'])
+                : null,
+            hotel: json['hotel'] != null
+                ? GridNavModel.fromJson(json['hotel'])
+                : null,
+            travel: json['travel'] != null
+                ? GridNavModel.fromJson(json['travel'])
+                : null)
+        : null;
   }
 
   Map<String, dynamic> toJson() {

@@ -1,7 +1,5 @@
-import 'dart:js';
-
-import 'config_model.dart';
 import 'common_model.dart';
+import 'config_model.dart';
 import 'grid_nav.dart';
 import 'sales_box.dart';
 
@@ -22,6 +20,7 @@ class HomeModel {
       this.subNavList,
       this.salesBox});
 
+  //特殊的fromJson方法
   HomeModel.fromJson(Map<String, dynamic> json) {
     config =
         json['config'] != null ? ConfigModel.fromJson(json['config']) : null;
@@ -40,6 +39,13 @@ class HomeModel {
       });
     }
 
+    //另一种写法
+    // if(json['localNavList']!=null){
+    //   //强制类型转换
+    //   var localNavListJson = json['localNavList'] as List;
+    //   localNavList = localNavListJson.map((e)=>CommonModel.fromJson(e)).toList();
+    // }
+
     gridNav =
         json['gridNav'] != null ? GridNav.fromJson(json['gridNav']) : null;
 
@@ -53,6 +59,19 @@ class HomeModel {
     salesBox =
         json['salesBox'] != null ? SalesBox.fromJson(json['salesBox']) : null;
   }
+
+  //按照工厂方法写的fromJson
+  // factory HomeModel.fromJson(Map<String, dynamic> json){
+  //   var config =
+  //   json['config'] != null ? ConfigModel.fromJson(json['config']) : null;
+  //
+  //   var bannerListJson = json['bannerList'] as List;
+  //   List<CommonModel> bannerList = bannerListJson.map((e)=>CommonModel.fromJson(e)).toList();
+  //
+  //   //等等...
+  //
+  //   return HomeModel(config: config,bannerList: bannerList);
+  // }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map();

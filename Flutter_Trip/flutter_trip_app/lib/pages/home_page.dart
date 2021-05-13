@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_trip_app/dao/home_dao.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,7 +11,6 @@ class HomePage extends StatefulWidget {
 
 //const常量只能定义在静态代码区内
 const double APPBAR_SCROLL_MAX = 100.0;
-const HOME_PAGE_URL = 'https://www.devio.org/io/flutter_app/json/home_page.json';
 
 class _HomePageState extends State<HomePage> {
   List<String> _imgUrls = [
@@ -19,6 +21,42 @@ class _HomePageState extends State<HomePage> {
 
   //初始状态下为透明
   double _appbarAlpha = 0;
+  String resultString = '';
+
+  @override
+  initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() {
+    //异步数据使用then
+    HomeDao.fetch().then((value) {
+      setState(() {
+        //把对象转换成json字符串
+        resultString = json.encode(value);
+      });
+    }).catchError((e) {
+      //获得出错返回后的操作，这是Future提供的方法
+      setState(() {
+        resultString = e.toString();
+      });
+    });
+  }
+
+  //另一种写法
+  // loadData() async {
+  //   try {
+  //     HomeModel model = await HomeDao.fetch();
+  //     setState(() {
+  //       resultString = json.encode(model);
+  //     });
+  //   } catch (e) {
+  //     setState(() {
+  //       resultString = e.toString();
+  //     });
+  //   }
+  // }
 
   // @override
   // Widget build(BuildContext context) {
@@ -108,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 800.0,
                     child: ListTile(
-                      title: Text('哈哈'),
+                      title: Text(resultString),
                     ),
                   ),
                 ],
