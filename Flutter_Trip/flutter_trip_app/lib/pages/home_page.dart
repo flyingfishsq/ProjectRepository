@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_trip_app/dao/home_dao.dart';
+import 'package:flutter_trip_app/model/common_model.dart';
+import 'package:flutter_trip_app/widget/local_nav_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   //初始状态下为透明
   double _appbarAlpha = 0;
   String resultString = '';
+  List<CommonModel> localNavList = [];
 
   @override
   initState() {
@@ -33,6 +36,7 @@ class _HomePageState extends State<HomePage> {
     //异步数据使用then
     HomeDao.fetch().then((value) {
       setState(() {
+        localNavList = value.localNavList;
         //把对象转换成json字符串
         resultString = json.encode(value);
       });
@@ -92,6 +96,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       //Stack相当于FrameLayout，子元素按照代码的顺序一层层覆盖
       body: Stack(
         children: [
@@ -136,12 +141,16 @@ class _HomePageState extends State<HomePage> {
                       //指示器
                       pagination: SwiperPagination(
                           builder: DotSwiperPaginationBuilder(
-                              activeColor: Colors.grey,
+                              activeColor: Colors.white,
                               size: 8.0,
                               activeSize: 8.0,
                               space: 4.0)),
                       controller: SwiperController(),
                     ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                    child: LocalNavWidget(localNavList: localNavList),
                   ),
                   Container(
                     height: 800.0,
