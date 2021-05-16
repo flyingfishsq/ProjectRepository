@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:F_Demo_1/model/post.dart';
 
 class PageViewBuilderDemo extends StatelessWidget {
-  const PageViewBuilderDemo({Key? key}) : super(key: key);
+  const PageViewBuilderDemo({Key key}) : super(key: key);
 
   Widget _pageItemBuilder(BuildContext context, int index) {
     return Stack(

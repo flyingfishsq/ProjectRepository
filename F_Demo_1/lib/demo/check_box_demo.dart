@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 //复选框
 class CheckBoxDemo extends StatefulWidget {
-  CheckBoxDemo({Key? key}) : super(key: key);
+  CheckBoxDemo({Key key}) : super(key: key);
 
   @override
   _CheckBoxDemoState createState() => _CheckBoxDemoState();
@@ -27,7 +27,7 @@ class _CheckBoxDemoState extends State<CheckBoxDemo> {
               value: _checkboxItemA,
               onChanged: (value) {
                 setState(() {
-                  _checkboxItemA = value!;
+                  _checkboxItemA = value;
                 });
               },
               title: Text('CheckBox item A Value = $_checkboxItemA'),
@@ -43,7 +43,7 @@ class _CheckBoxDemoState extends State<CheckBoxDemo> {
                   value: _checkboxItemA,
                   onChanged: (value) {
                     setState(() {
-                      _checkboxItemA = value!;
+                      _checkboxItemA = value;
                     });
                   },
                   activeColor: Colors.black,

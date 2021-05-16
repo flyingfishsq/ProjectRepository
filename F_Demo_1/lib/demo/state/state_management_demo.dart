@@ -108,7 +108,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 //使用ScopedModel将小部件改造成一个StatelessWidget
 class StateManagementDemo extends StatelessWidget {
-  const StateManagementDemo({Key? key}) : super(key: key);
+  const StateManagementDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -200,13 +200,13 @@ class CounterProvider extends InheritedWidget {
   final Widget child;
 
   CounterProvider(
-      {Key? key,
-      required this.count,
-      required this.increaseCount,
-      required this.child})
+      {Key key,
+      @required this.count,
+      @required this.increaseCount,
+      @required this.child})
       : super(key: key, child: child);
 
-  static CounterProvider? of(BuildContext context) {
+  static CounterProvider of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<CounterProvider>();
   }
 

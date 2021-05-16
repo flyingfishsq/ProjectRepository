@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ConstrainedBoxDemo extends StatelessWidget {
-  const ConstrainedBoxDemo({Key? key}) : super(key: key);
+  const ConstrainedBoxDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

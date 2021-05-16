@@ -2,7 +2,7 @@ import 'package:F_Demo_1/demo/stack_demo.dart';
 import 'package:flutter/material.dart';
 
 class LayoutDemo extends StatelessWidget {
-  const LayoutDemo({Key? key}) : super(key: key);
+  const LayoutDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,7 @@ class LayoutDemo extends StatelessWidget {
 class IconBadge extends StatelessWidget {
   IconBadge(
     this.icon, {
-    Key? key,
+    Key key,
     this.size = 48.0,
   }) : super(key: key);
 

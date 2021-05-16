@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class BasicDemo extends StatelessWidget {
-  BasicDemo({Key? key}) : super(key: key);
+  BasicDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class BasicDemo extends StatelessWidget {
             // repeat: ImageRepeat.repeatY,
             //颜色滤镜
             colorFilter: ColorFilter.mode(
-                Colors.indigo[400]!.withOpacity(0.5), BlendMode.hardLight)),
+                Colors.indigo[400].withOpacity(0.5), BlendMode.hardLight)),
       ),
       //容器默认是撑满屏幕，如果想设置尺寸，要放在Row或者Column中
       child: Row(
@@ -60,7 +60,7 @@ class BasicDemo extends StatelessWidget {
 
                 //四边统一设置边框
                 border: Border.all(
-                  color: (Colors.indigoAccent[100])!,
+                  color: (Colors.indigoAccent[100]),
                   width: 3.0,
                   style: BorderStyle.solid,
                 ),
@@ -119,7 +119,7 @@ class BasicDemo extends StatelessWidget {
 }
 
 class TextDemo extends StatelessWidget {
-  TextDemo({Key? key}) : super(key: key);
+  TextDemo({Key key}) : super(key: key);
 
   final String _author = "酒剑仙";
   final String _title = "行酒诗";
@@ -139,7 +139,7 @@ class TextDemo extends StatelessWidget {
 }
 
 class RichTextDemo extends StatelessWidget {
-  const RichTextDemo({Key? key}) : super(key: key);
+  const RichTextDemo({Key key}) : super(key: key);
 
   final String _author = "酒剑仙";
   final String _title = "行酒诗";

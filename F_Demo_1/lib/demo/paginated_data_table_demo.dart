@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:F_Demo_1/model/post.dart';
 
 class PaginatedDataTableDemo extends StatefulWidget {
-  PaginatedDataTableDemo({Key? key}) : super(key: key);
+  PaginatedDataTableDemo({Key key}) : super(key: key);
 
   @override
   _PaginatedDataTableDemoState createState() => _PaginatedDataTableDemoState();
 }
 
 class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
-  late int _sortColumnIndex;
+  int _sortColumnIndex;
   bool _sortAscending = true;
 
   final PostDataSource _postDataSource = PostDataSource();
@@ -29,7 +29,7 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
               rowsPerPage: 5,
               source: _postDataSource,
               //定制全选状态
-              onSelectAll: (bool? value) {},
+              onSelectAll: (bool value) {},
               //用来作为排序的列序号
               sortColumnIndex: _sortColumnIndex,
               //未真表示升序排列，为假表示降序排列

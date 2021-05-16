@@ -2,7 +2,7 @@ import 'package:F_Demo_1/demo/gridview_builder_demo.dart';
 import 'package:flutter/material.dart';
 
 class ViewDemo extends StatelessWidget {
-  const ViewDemo({Key? key}) : super(key: key);
+  const ViewDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

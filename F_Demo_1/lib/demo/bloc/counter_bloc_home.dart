@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class CounterHome extends StatelessWidget {
-  const CounterHome({Key? key}) : super(key: key);
+  const CounterHome({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    CounterBLoC _counterBLoC = CounterProvider.of(context)!.bloc;
+    CounterBLoC _counterBLoC = CounterProvider.of(context).bloc;
 
     return Center(
       // child: ActionChip(
@@ -37,11 +37,11 @@ class CounterHome extends StatelessWidget {
 
 //在BLoC中需要创建sink和stream，即数据流的入口和出口
 class CounterActionButton extends StatelessWidget {
-  const CounterActionButton({Key? key}) : super(key: key);
+  const CounterActionButton({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    CounterBLoC _counterBLoC = CounterProvider.of(context)!.bloc;
+    CounterBLoC _counterBLoC = CounterProvider.of(context).bloc;
 
     return FloatingActionButton(
       child: Icon(Icons.add),
@@ -89,10 +89,10 @@ class CounterProvider extends InheritedWidget {
   final Widget child;
   final CounterBLoC bloc;
 
-  CounterProvider({Key? key, required this.child, required this.bloc})
+  CounterProvider({Key key, @required this.child, @required this.bloc})
       : super(key: key, child: child);
 
-  static CounterProvider? of(BuildContext context) {
+  static CounterProvider of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<CounterProvider>();
   }
 

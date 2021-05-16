@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SnackBarDemo extends StatefulWidget {
-  SnackBarDemo({Key? key}) : super(key: key);
+  SnackBarDemo({Key key}) : super(key: key);
 
   @override
   _SnackBarDemoState createState() => _SnackBarDemoState();
@@ -33,7 +33,7 @@ class _SnackBarDemoState extends State<SnackBarDemo> {
 }
 
 class SnackBarButton extends StatelessWidget {
-  const SnackBarButton({Key? key}) : super(key: key);
+  const SnackBarButton({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

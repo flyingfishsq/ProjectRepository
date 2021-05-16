@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChipDemo extends StatefulWidget {
-  ChipDemo({Key? key}) : super(key: key);
+  ChipDemo({Key key}) : super(key: key);
 
   @override
   _ChipDemoState createState() => _ChipDemoState();

@@ -2,7 +2,7 @@ import 'package:F_Demo_1/demo/i18n/intl/ninghao_demo_localizations.dart';
 import 'package:flutter/material.dart';
 
 class I18nDemo extends StatelessWidget {
-  const I18nDemo({Key? key}) : super(key: key);
+  const I18nDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

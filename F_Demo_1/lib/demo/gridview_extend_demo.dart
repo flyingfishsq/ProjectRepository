@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GridViewExtendDemo extends StatelessWidget {
-  const GridViewExtendDemo({required Key key}) : super(key: key);
+  const GridViewExtendDemo({@required Key key}) : super(key: key);
 
   //使用方法快速创建item
   List<Widget> _buildTiles(int length) {

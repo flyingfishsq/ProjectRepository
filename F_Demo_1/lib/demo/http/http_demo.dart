@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class HttpDemo extends StatelessWidget {
-  const HttpDemo({Key? key}) : super(key: key);
+  const HttpDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class HttpDemo extends StatelessWidget {
 }
 
 class HttpDemoHome extends StatefulWidget {
-  HttpDemoHome({Key? key}) : super(key: key);
+  HttpDemoHome({Key key}) : super(key: key);
 
   @override
   _HttpDemoHomeState createState() => _HttpDemoHomeState();
@@ -132,11 +132,11 @@ class Post {
 
 //注意构造方法的定义
   Post(
-      {required this.id,
-      required this.title,
-      required this.author,
-      required this.imageUrl,
-      required this.description});
+      {@required this.id,
+      @required this.title,
+      @required this.author,
+      @required this.imageUrl,
+      @required this.description});
 
   bool selected = false;
 

@@ -22,7 +22,7 @@ Map<String, LibraryLoader> _deferredLibraries = {
   'messages': () => new Future.value(null),
 };
 
-MessageLookupByLibrary? _findExact(String localeName) {
+MessageLookupByLibrary _findExact(String localeName) {
   switch (localeName) {
     case 'messages':
       return messages_messages.messages;
@@ -54,7 +54,7 @@ bool _messagesExistFor(String locale) {
   }
 }
 
-MessageLookupByLibrary? _findGeneratedMessagesFor(String locale) {
+MessageLookupByLibrary _findGeneratedMessagesFor(String locale) {
   var actualLocale =
       Intl.verifiedLocale(locale, _messagesExistFor, onFailure: (_) => '出错了');
   if (actualLocale == null) return null;

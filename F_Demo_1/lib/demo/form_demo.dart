@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FormDemo extends StatelessWidget {
-  const FormDemo({Key? key}) : super(key: key);
+  const FormDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class FormDemo extends StatelessWidget {
 }
 
 class RegisterForm extends StatefulWidget {
-  RegisterForm({Key? key}) : super(key: key);
+  RegisterForm({Key key}) : super(key: key);
 
   @override
   _RegisterFormState createState() => _RegisterFormState();
@@ -51,12 +51,12 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   //使用这个获取输入框里的文字
   final registerFormKey = GlobalKey<FormState>();
-  late String userName, password;
+  String userName, password;
 
 //与autovalidate结合使用，避免了打开界面的时候就检查合法性的问题，点击提交按钮之后启动自动检测
   void _submitRegisterForm() {
-    if (registerFormKey.currentState!.validate()) {
-      registerFormKey.currentState!.save();
+    if (registerFormKey.currentState.validate()) {
+      registerFormKey.currentState.save();
 
       debugPrint("user name = $userName");
       debugPrint("password = $password");
@@ -72,18 +72,18 @@ class _RegisterFormState extends State<RegisterForm> {
     }
 
     //在这里调用合法性检测
-    registerFormKey.currentState!.validate();
+    registerFormKey.currentState.validate();
   }
 
 //如果检验不通过，返回提示信息，否则返回null表示验证通过
-  String? _validateUserName(value) {
+  String _validateUserName(value) {
     if (value.isEmpty) {
       return '请输入用户名';
     }
     return null;
   }
 
-  String? _validatePassword(value) {
+  String _validatePassword(value) {
     if (value.isEmpty) {
       return '请输入密码';
     }
@@ -106,7 +106,7 @@ class _RegisterFormState extends State<RegisterForm> {
               helperText: '',
             ),
             onSaved: (value) {
-              userName = value!;
+              userName = value;
             },
             //字符串验证器
             validator: _validateUserName,
@@ -121,7 +121,7 @@ class _RegisterFormState extends State<RegisterForm> {
               helperText: '',
             ),
             onSaved: (value) {
-              password = value!;
+              password = value;
             },
             validator: _validatePassword,
             autovalidate: _autoValidate,

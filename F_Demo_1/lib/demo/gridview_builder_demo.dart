@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:F_Demo_1/model/post.dart';
 
 class GridViewBuilderDemo extends StatelessWidget {
-  const GridViewBuilderDemo({Key? key}) : super(key: key);
+  const GridViewBuilderDemo({Key key}) : super(key: key);
 
   Widget _gridItemBuilder(BuildContext context, int index) {
     return Container(

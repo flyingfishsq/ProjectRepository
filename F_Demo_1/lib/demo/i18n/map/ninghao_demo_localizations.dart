@@ -18,8 +18,8 @@ class NingHaoDemoLocalizations {
     'zh': {'title': '您好'},
   };
 
-  String? get title {
-    return _localized[locale.languageCode]!['title'];
+  String get title {
+    return _localized[locale.languageCode]['title'];
   }
 }
 

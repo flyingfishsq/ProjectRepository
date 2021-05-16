@@ -2,7 +2,7 @@ import 'package:F_Demo_1/model/post.dart';
 import 'package:flutter/material.dart';
 
 class SliverDemo extends StatelessWidget {
-  const SliverDemo({Key? key}) : super(key: key);
+  const SliverDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class SliverDemo extends StatelessWidget {
 }
 
 class SliverGridDemo extends StatelessWidget {
-  const SliverGridDemo({Key? key}) : super(key: key);
+  const SliverGridDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class SliverGridDemo extends StatelessWidget {
 }
 
 class SliverListDemo extends StatelessWidget {
-  const SliverListDemo({Key? key}) : super(key: key);
+  const SliverListDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
