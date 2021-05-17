@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_trip_app/dao/home_dao.dart';
 import 'package:flutter_trip_app/model/common_model.dart';
+import 'package:flutter_trip_app/model/grid_nav.dart';
+import 'package:flutter_trip_app/widget/grid_nav_widget.dart';
 import 'package:flutter_trip_app/widget/local_nav_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,10 +23,13 @@ class _HomePageState extends State<HomePage> {
     'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fphotocdn.sohu.com%2F20120509%2FImg342738868.jpg&refer=http%3A%2F%2Fphotocdn.sohu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623035685&t=ead4e8d42b599ee6a21431ce1c409a71',
   ];
 
+  List<CommonModel> bannerList = [];
+
   //初始状态下为透明
   double _appbarAlpha = 0;
   String resultString = '';
   List<CommonModel> localNavList = [];
+  GridNav gridNav;
 
   @override
   initState() {
@@ -36,7 +41,9 @@ class _HomePageState extends State<HomePage> {
     //异步数据使用then
     HomeDao.fetch().then((value) {
       setState(() {
+        bannerList = value.bannerList;
         localNavList = value.localNavList;
+        gridNav = value.gridNav;
         //把对象转换成json字符串
         resultString = json.encode(value);
       });
@@ -132,16 +139,20 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 160.0,
                     child: Swiper(
+                      //测试图片加载
+                      // itemBuilder: (context, index) =>
+                      //     Image.network(_imgUrls[index], fit: BoxFit.fill),
+                      // itemCount: _imgUrls.length,
                       itemBuilder: (context, index) =>
-                          Image.network(_imgUrls[index], fit: BoxFit.fill),
-                      itemCount: _imgUrls.length,
+                          Image.network(bannerList[index].icon, fit: BoxFit.fill),
+                      itemCount: bannerList.length,
                       autoplay: true,
                       // viewportFraction: 0.9,
                       // scale: 0.9,
                       //指示器
                       pagination: SwiperPagination(
                           builder: DotSwiperPaginationBuilder(
-                              activeColor: Colors.white,
+                              activeColor: Colors.blueAccent,
                               size: 8.0,
                               activeSize: 8.0,
                               space: 4.0)),
@@ -152,6 +163,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                     child: LocalNavWidget(localNavList: localNavList),
                   ),
+                  GridNavWidget(model: gridNav),
                   Container(
                     height: 800.0,
                     child: ListTile(

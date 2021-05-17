@@ -4,6 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
+//点击返回的时候，出现不是返回到Flutter首页，而是携程主页web的情况，在这里做地址判定跳转控制
+const List<String> WHITE_LIST_URLS = [
+  'm.ctrip.com/',
+  'm.ctrip.com/html5/',
+  'm.ctrip.com/html5'
+];
+
 class WebView extends StatefulWidget {
   final String url;
   final String statusBarColor;
@@ -11,12 +18,13 @@ class WebView extends StatefulWidget {
   final bool hideAppBar;
   final bool backForbid;
 
+  //backForbid不一定有值，设置一个默认值
   WebView(
       {this.url,
       this.statusBarColor,
       this.title,
       this.hideAppBar,
-      this.backForbid});
+      this.backForbid = false});
 
   @override
   _WebViewState createState() => _WebViewState();
@@ -27,6 +35,8 @@ class _WebViewState extends State<WebView> {
   StreamSubscription<String> _onUrlChanged;
   StreamSubscription<WebViewStateChanged> _onStateChanged;
   StreamSubscription<WebViewHttpError> _onHttpError;
+
+  bool exiting = false;
 
   @override
   void initState() {
@@ -39,6 +49,15 @@ class _WebViewState extends State<WebView> {
     _onStateChanged = webViewRef.onStateChanged.listen((event) {
       switch (event.type) {
         case WebViewState.startLoad:
+          if (_isToMain(event.url) && !exiting) {
+            //是否禁止返回，是的话就重新加载当前页面
+            if (widget.backForbid) {
+              webViewRef.launch(widget.url);
+            } else {
+              Navigator.pop(context);
+              exiting = true;
+            }
+          }
           break;
         default:
           break;
@@ -58,6 +77,19 @@ class _WebViewState extends State<WebView> {
     _onStateChanged.cancel();
     _onHttpError.cancel();
     webViewRef.dispose();
+  }
+
+  //url在白名单中，则强制返回Flutter首页
+  bool _isToMain(String url) {
+    bool contain = false;
+    for (final value in WHITE_LIST_URLS) {
+      //非空调用
+      if (url?.endsWith(value) ?? false) {
+        contain = true;
+        break;
+      }
+    }
+    return contain;
   }
 
   @override
