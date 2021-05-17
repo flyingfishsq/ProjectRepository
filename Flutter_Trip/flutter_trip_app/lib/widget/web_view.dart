@@ -75,7 +75,8 @@ class _WebViewState extends State<WebView> {
       body: Column(
         children: [
           //把String类型的颜色转换成int类型，一个完整的颜色是八位16进制数
-          _appBar(Color(int.parse('0xff' + statusBarColorStr)), backButtonColor),
+          _appBar(
+              Color(int.parse('0xff' + statusBarColorStr)), backButtonColor),
           //appBar底下的布局被撑满
           Expanded(
               child: WebviewScaffold(
@@ -86,7 +87,9 @@ class _WebViewState extends State<WebView> {
             //设置初始化界面，相当于有个加载进度
             initialChild: Container(
               color: Colors.white,
-              child: Text('加载中...'),
+              child: Center(
+                child: Text('加载中...'),
+              ),
             ),
           )),
         ],
