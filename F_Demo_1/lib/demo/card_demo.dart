@@ -50,7 +50,9 @@ class _CardDemoState extends State<CardDemo> {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  ButtonTheme.bar(
+                  ButtonBarTheme(
+                    data: ButtonBarThemeData(
+                        buttonTextTheme: ButtonTextTheme.accent),
                     child: ButtonBar(
                       children: [
                         FlatButton(
@@ -62,6 +64,18 @@ class _CardDemoState extends State<CardDemo> {
                       ],
                     ),
                   ),
+                  // ButtonTheme.bar(
+                  //   child: ButtonBar(
+                  //     children: [
+                  //       FlatButton(
+                  //           onPressed: () {},
+                  //           child: Text('Like'.toUpperCase())),
+                  //       FlatButton(
+                  //           onPressed: () {},
+                  //           child: Text('Read'.toUpperCase())),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             );
