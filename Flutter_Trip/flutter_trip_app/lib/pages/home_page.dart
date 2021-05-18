@@ -164,7 +164,10 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                     child: LocalNavWidget(localNavList: localNavList),
                   ),
-                  GridNavWidget(model: gridNav),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                    child: GridNavWidget(model: gridNav),
+                  ),
                   Container(
                     height: 800.0,
                     child: ListTile(

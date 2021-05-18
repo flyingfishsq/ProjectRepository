@@ -13,8 +13,21 @@ class GridNavWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: _gridNavItems(context),
+    // return Container(
+    //   //底下的那层渐变色把圆角盖住了，这样设置无效
+    //   decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
+    //   child: Column(
+    //     children: _gridNavItems(context),
+    //   ),
+    // );
+
+    return PhysicalModel(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        children: _gridNavItems(context),
+      ),
     );
   }
 
@@ -75,6 +88,7 @@ class GridNavWidget extends StatelessWidget {
     return _wrapGesture(
         context,
         Stack(
+          alignment: AlignmentDirectional.topCenter,
           children: [
             Image.network(
               model.icon,

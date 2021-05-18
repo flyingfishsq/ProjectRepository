@@ -13,7 +13,7 @@ class LocalNavWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 64.0,
+      height: 76.0,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -63,8 +63,11 @@ class LocalNavWidget extends StatelessWidget {
         children: [
           Image.network(
             model.icon,
-            width: 28.0,
-            height: 28.0,
+            width: 32.0,
+            height: 32.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 8),
           ),
           Text(
             model.title,
