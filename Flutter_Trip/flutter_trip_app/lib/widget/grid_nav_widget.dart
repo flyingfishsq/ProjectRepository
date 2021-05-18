@@ -25,15 +25,15 @@ class GridNavWidget extends StatelessWidget {
     }
 
     if (model.hotel != null) {
-      _gridNavItem(context, model.hotel, true);
+      items.add(_gridNavItem(context, model.hotel, true));
     }
 
     if (model.flight != null) {
-      _gridNavItem(context, model.flight, false);
+      items.add(_gridNavItem(context, model.flight, false));
     }
 
     if (model.travel != null) {
-      _gridNavItem(context, model.travel, false);
+      items.add(_gridNavItem(context, model.travel, false));
     }
 
     return items;
@@ -83,9 +83,12 @@ class GridNavWidget extends StatelessWidget {
               width: 120,
               alignment: AlignmentDirectional.bottomEnd,
             ),
-            Text(
-              model.title,
-              style: TextStyle(fontSize: 14, color: Colors.white),
+            Container(
+              margin: EdgeInsets.only(top: 12),
+              child: Text(
+                model.title,
+                style: TextStyle(fontSize: 14, color: Colors.white),
+              ),
             ),
           ],
         ),

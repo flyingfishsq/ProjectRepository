@@ -143,8 +143,9 @@ class _HomePageState extends State<HomePage> {
                       // itemBuilder: (context, index) =>
                       //     Image.network(_imgUrls[index], fit: BoxFit.fill),
                       // itemCount: _imgUrls.length,
-                      itemBuilder: (context, index) =>
-                          Image.network(bannerList[index].icon, fit: BoxFit.fill),
+                      itemBuilder: (context, index) => Image.network(
+                          bannerList[index].icon,
+                          fit: BoxFit.fill),
                       itemCount: bannerList.length,
                       autoplay: true,
                       // viewportFraction: 0.9,
