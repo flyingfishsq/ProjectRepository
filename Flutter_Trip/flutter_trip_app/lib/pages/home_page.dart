@@ -7,6 +7,7 @@ import 'package:flutter_trip_app/model/common_model.dart';
 import 'package:flutter_trip_app/model/grid_nav.dart';
 import 'package:flutter_trip_app/widget/grid_nav_widget.dart';
 import 'package:flutter_trip_app/widget/local_nav_widget.dart';
+import 'package:flutter_trip_app/widget/sub_nav_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   String resultString = '';
   List<CommonModel> localNavList = [];
   GridNav gridNav;
+  List<CommonModel> subNavList = [];
 
   @override
   initState() {
@@ -44,6 +46,7 @@ class _HomePageState extends State<HomePage> {
         bannerList = value.bannerList;
         localNavList = value.localNavList;
         gridNav = value.gridNav;
+        subNavList = value.subNavList;
         //把对象转换成json字符串
         resultString = json.encode(value);
       });
@@ -167,6 +170,10 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                     child: GridNavWidget(model: gridNav),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                    child: SubNavWidget(subNavList: subNavList),
                   ),
                   Container(
                     height: 800.0,

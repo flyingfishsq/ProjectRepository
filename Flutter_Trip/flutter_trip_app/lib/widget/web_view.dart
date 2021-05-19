@@ -71,12 +71,13 @@ class _WebViewState extends State<WebView> {
 
   @override
   void dispose() {
-    super.dispose();
     //取消和释放监听
     _onUrlChanged.cancel();
     _onStateChanged.cancel();
     _onHttpError.cancel();
     webViewRef.dispose();
+
+    super.dispose();
   }
 
   //url在白名单中，则强制返回Flutter首页
@@ -139,7 +140,9 @@ class _WebViewState extends State<WebView> {
     }
 
     return Container(
+      color: bgColor,
       //appBar撑满屏幕的宽度
+      padding: EdgeInsets.fromLTRB(0, 40, 0, 10),
       child: FractionallySizedBox(
         //设置成宽度的撑满
         widthFactor: 1,
@@ -147,6 +150,9 @@ class _WebViewState extends State<WebView> {
           children: [
             //可触摸的按钮
             GestureDetector(
+              onTap: (){
+                Navigator.pop(context);
+              },
               child: Container(
                 margin: EdgeInsets.only(left: 10.0),
                 child: Icon(
