@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_trip_app/model/common_model.dart';
-import 'package:flutter_trip_app/model/grid_nav_model.dart';
 import 'package:flutter_trip_app/widget/web_view.dart';
 
 class SubNavWidget extends StatelessWidget {

@@ -5,8 +5,10 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_trip_app/dao/home_dao.dart';
 import 'package:flutter_trip_app/model/common_model.dart';
 import 'package:flutter_trip_app/model/grid_nav.dart';
+import 'package:flutter_trip_app/model/sales_box.dart';
 import 'package:flutter_trip_app/widget/grid_nav_widget.dart';
 import 'package:flutter_trip_app/widget/local_nav_widget.dart';
+import 'package:flutter_trip_app/widget/sales_box_widget.dart';
 import 'package:flutter_trip_app/widget/sub_nav_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   List<CommonModel> localNavList = [];
   GridNav gridNav;
   List<CommonModel> subNavList = [];
+  SalesBox salesBox;
 
   @override
   initState() {
@@ -47,6 +50,7 @@ class _HomePageState extends State<HomePage> {
         localNavList = value.localNavList;
         gridNav = value.gridNav;
         subNavList = value.subNavList;
+        salesBox = value.salesBox;
         //把对象转换成json字符串
         resultString = json.encode(value);
       });
@@ -106,7 +110,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[100],
       //Stack相当于FrameLayout，子元素按照代码的顺序一层层覆盖
       body: Stack(
         children: [
@@ -174,6 +178,10 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                     child: SubNavWidget(subNavList: subNavList),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                    child: SalesBoxWidget(salesBox: salesBox),
                   ),
                   Container(
                     height: 800.0,
