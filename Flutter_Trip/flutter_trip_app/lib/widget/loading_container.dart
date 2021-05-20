@@ -5,6 +5,7 @@ class LoadingContainer extends StatelessWidget {
   //注意这里的一些写法
   final Widget childWidget;
   final bool isLoading;
+  //是否覆盖页面布局，是否在child之上层
   final bool cover;
 
   LoadingContainer(
@@ -16,6 +17,7 @@ class LoadingContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //思考这个表达式含义
     return !cover
         ? !isLoading
             ? childWidget
@@ -25,6 +27,7 @@ class LoadingContainer extends StatelessWidget {
           );
   }
 
+  //这里为什么要加 get
   Widget get _loadingView {
     return Center(
       child: CircularProgressIndicator(),
