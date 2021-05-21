@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 //SearchBarType三种状态的枚举：首页状态下普通的样式，首页状态下高亮的样式，搜索界面下的样式
+//测试提交
 enum SearchBarType { home, homeLight, normal }
 
 //注意这里的写法
