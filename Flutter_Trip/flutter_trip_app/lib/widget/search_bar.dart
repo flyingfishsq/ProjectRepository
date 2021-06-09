@@ -20,9 +20,9 @@ class SearchBar extends StatefulWidget {
 
   SearchBar(
       {Key key,
-      this.enabled,
+      this.enabled = true,
       this.hideLeft,
-      this.searchBarType,
+      this.searchBarType = SearchBarType.normal,
       this.hint,
       this.defaultText,
       this.leftButtonClick,
@@ -108,6 +108,12 @@ class _SearchBarState extends State<SearchBar> {
       inputBoxColor = Color(int.parse('0xffEDEDED'));
     }
     return Container(
+      height: 30,
+      padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+      decoration: BoxDecoration(
+          color: inputBoxColor,
+          borderRadius: BorderRadius.circular(
+              widget.searchBarType == SearchBarType.normal ? 5 : 15)),
       child: Row(
         children: [
           Icon(
