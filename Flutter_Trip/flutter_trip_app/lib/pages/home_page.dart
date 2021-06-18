@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // loadData();
     _handleRefresh();
+  // _handleRefresh2();
   }
 
   //改进的结合RefreshLoadIndicator需要的Future
@@ -67,6 +68,21 @@ class _HomePageState extends State<HomePage> {
         isLoading = false;
         resultString = e.toString();
       });
+    }
+    return null;
+  }
+
+  Future<Null> _handleRefresh2() async {
+    try {
+      isLoading = false;
+      var s = await HomeDao.fetchData(
+          "http://60.170.27.134:8898/BBService/YDZFService.asmx/HBSPList",
+          '15',
+          '1');
+      resultString = s;
+    } catch (e) {
+      isLoading = false;
+      resultString = e.toString();
     }
     return null;
   }
@@ -177,6 +193,7 @@ class _HomePageState extends State<HomePage> {
                   child: _listView,
                 ),
                 onRefresh: _handleRefresh,
+                // onRefresh: _handleRefresh2,
               ),
             ),
             _appBar,
