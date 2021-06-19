@@ -1,13 +1,22 @@
+import 'package:F_Demo_1/demo/animation/animation_demo.dart';
+import 'package:F_Demo_1/demo/bloc/bolc_demo.dart';
 import 'package:F_Demo_1/demo/bottom_navigation_bar_demo.dart';
 import 'package:F_Demo_1/demo/drawer_demo.dart';
 import 'package:F_Demo_1/demo/form_demo.dart';
+import 'package:F_Demo_1/demo/http/http_demo.dart';
+import 'package:F_Demo_1/demo/i18n/i18n_demo.dart';
+import 'package:F_Demo_1/demo/i18n/intl/ninghao_demo_localizations.dart';
 import 'package:F_Demo_1/demo/layout_demo.dart';
 import 'package:F_Demo_1/demo/listview_demo.dart';
 import 'package:F_Demo_1/demo/basic_demo.dart';
 import 'package:F_Demo_1/demo/material_components.dart';
+import 'package:F_Demo_1/demo/rxdart/rxdart_demo.dart';
 import 'package:F_Demo_1/demo/sliver_demo.dart';
+import 'package:F_Demo_1/demo/state/state_management_demo.dart';
+import 'package:F_Demo_1/demo/stream/stream_demo.dart';
 import 'package:F_Demo_1/demo/view_demo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'demo/navigator_demo.dart';
 
@@ -27,6 +36,34 @@ class App extends StatelessWidget {
     //   home: Hello(),
     // );
     return MaterialApp(
+      //设置默认的Locale
+      // locale: Locale(
+      //   'en',
+      //   'US',
+      // ),
+      // localeResolutionCallback:
+      //     (Locale locale, Iterable<Locale> supportedLocales) {
+      //   return Locale('en', 'US');
+      // },
+      locale: Locale(
+        'zh',
+        'CN',
+      ),
+      localizationsDelegates: [
+        NingHaoDemoLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale(
+          'en',
+          'US',
+        ),
+        Locale(
+          'zh',
+          'CN',
+        ),
+      ],
       // home: Scaffold(
       //   appBar: AppBar(
       //     title: Text("你好"),
@@ -49,7 +86,14 @@ class App extends StatelessWidget {
       //可以试试这个
       // initialRoute: '/about',
       // initialRoute: '/form',
-      initialRoute: '/mdc',
+      // initialRoute: '/mdc',
+      // initialRoute: '/state-management',
+      // initialRoute: '/stream',
+      // initialRoute: '/rxdart',
+      // initialRoute: '/bloc',
+      // initialRoute: '/http',
+      // initialRoute: '/animation',
+      initialRoute: '/i18n',
       routes: {
         //斜线表示路由的根（初始路由），当前的根表示home中显示的那个界面
         //如果不用这个home，可以屏蔽home，然后设置initialRoute
@@ -58,6 +102,13 @@ class App extends StatelessWidget {
         '/about': (context) => MyPage(title: "关于"),
         '/form': (context) => FormDemo(),
         '/mdc': (context) => MaterialComponents(),
+        '/state-management': (context) => StateManagementDemo(),
+        '/stream': (context) => StreamDemo(),
+        '/rxdart': (context) => RxDartDemo(),
+        '/bloc': (context) => BolcDemo(),
+        '/http': (context) => HttpDemo(),
+        '/animation': (context) => AnimationDemo(),
+        '/i18n': (context) => I18nDemo(),
       },
       //界面跳转的学习-路由
 

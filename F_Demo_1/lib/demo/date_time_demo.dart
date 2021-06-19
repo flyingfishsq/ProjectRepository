@@ -11,18 +11,33 @@ class DateTimeDemo extends StatefulWidget {
 class _DateTimeDemoState extends State<DateTimeDemo> {
   DateTime selectedDate = DateTime.now();
 
+  TimeOfDay selectedTime = TimeOfDay(hour: 9, minute: 30);
+
   //不加async会报错
-  _selectDate() async {
-    final DateTime date = await showDatePicker(
+  Future<void> _selectDate() async {
+    final DateTime date = (await showDatePicker(
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(1970),
-        lastDate: DateTime(2050));
+        lastDate: DateTime(2050)));
 
+    //这里表示用户点击了cancel按钮
     if (date == null) return;
 
     setState(() {
       selectedDate = date;
+    });
+  }
+
+  Future<void> _selectTime() async {
+    final TimeOfDay time =
+        (await showTimePicker(context: context, initialTime: selectedTime));
+
+    //这里表示用户点击了cancel按钮
+    if (time == null) return;
+
+    setState(() {
+      selectedTime = time;
     });
   }
 
@@ -45,10 +60,19 @@ class _DateTimeDemoState extends State<DateTimeDemo> {
                   child: Row(
                     children: [
                       Text(DateFormat.yMMMd().format(selectedDate)),
-                      Icon(Icons.arrow_drop_down)
+                      Icon(Icons.arrow_drop_down),
                     ],
                   ),
-                )
+                ),
+                InkWell(
+                  onTap: _selectTime,
+                  child: Row(
+                    children: [
+                      Text(selectedTime.format(context)),
+                      Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],

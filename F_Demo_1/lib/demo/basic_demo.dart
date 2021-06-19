@@ -60,7 +60,7 @@ class BasicDemo extends StatelessWidget {
 
                 //四边统一设置边框
                 border: Border.all(
-                  color: Colors.indigoAccent[100],
+                  color: (Colors.indigoAccent[100]),
                   width: 3.0,
                   style: BorderStyle.solid,
                 ),

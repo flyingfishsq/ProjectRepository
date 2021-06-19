@@ -23,7 +23,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: 0.15.7
+  intl: 0.17.0
+  scoped_model: ^0.3.0
+  rxdart: ^0.18.1
+  http: ^0.12.0
+  flutter_localizations: 
+    sdk: flutter
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -33,6 +38,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+    #https://pub.dev/packages/intl_translation文档称版本不一致，可能是需要手动重新生成文件
+  intl_translation: ^0.17.10
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

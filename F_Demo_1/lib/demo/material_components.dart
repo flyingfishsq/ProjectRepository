@@ -1,11 +1,21 @@
+import 'package:F_Demo_1/demo/alert_dialog_demo.dart';
+import 'package:F_Demo_1/demo/bottom_sheet_demo.dart';
 import 'package:F_Demo_1/demo/button_demo.dart';
+import 'package:F_Demo_1/demo/card_demo.dart';
 import 'package:F_Demo_1/demo/check_box_demo.dart';
+import 'package:F_Demo_1/demo/chip_demo.dart';
+import 'package:F_Demo_1/demo/data_table_demo.dart';
 import 'package:F_Demo_1/demo/date_time_demo.dart';
+import 'package:F_Demo_1/demo/expansion_panel_demo.dart';
 import 'package:F_Demo_1/demo/floating_action_button_demo.dart';
 import 'package:F_Demo_1/demo/form_demo.dart';
+import 'package:F_Demo_1/demo/paginated_data_table_demo.dart';
 import 'package:F_Demo_1/demo/popup_menu_demo.dart';
 import 'package:F_Demo_1/demo/radio_button_demo.dart';
+import 'package:F_Demo_1/demo/simple_dialog_demo.dart';
 import 'package:F_Demo_1/demo/slider_demo.dart';
+import 'package:F_Demo_1/demo/snack_bar_demo.dart';
+import 'package:F_Demo_1/demo/stepper_demo.dart';
 import 'package:F_Demo_1/demo/switch_demo.dart';
 import 'package:flutter/material.dart';
 
@@ -22,44 +32,84 @@ class MaterialComponents extends StatelessWidget {
       body: ListView(
         children: [
           ListItem(
-            title: 'FloatingActionButton悬浮按钮',
+            title: '1. FloatingActionButton悬浮按钮',
             page: FloatingActionButtonDemo(),
           ),
           ListItem(
-            title: 'Button多种按钮',
+            title: '2. Button多种按钮',
             page: ButtonDemo(),
           ),
           ListItem(
-            title: 'Weiget部件',
-            page: WeidgetDemo(),
+            title: '3. Widget部件',
+            page: WidgetDemo(),
           ),
           ListItem(
-            title: 'PopupMenu弹出框',
+            title: '4. PopupMenu弹出框',
             page: PopupMenuDemo(),
           ),
           ListItem(
-            title: 'Form表单',
+            title: '5. Form表单',
             page: FormDemo(),
           ),
           ListItem(
-            title: 'CheckBox复选框',
+            title: '6. CheckBox复选框',
             page: CheckBoxDemo(),
           ),
           ListItem(
-            title: 'RadioButton单选按钮',
+            title: '7. RadioButton单选按钮',
             page: RadioButtonDemo(),
           ),
           ListItem(
-            title: 'Switch开关按钮',
+            title: '8. Switch开关按钮',
             page: SwitchDemo(),
           ),
           ListItem(
-            title: 'Slider滑动控件',
+            title: '9. Slider滑动控件',
             page: SliderDemo(),
           ),
           ListItem(
-            title: 'DateTime时间选择控件',
+            title: '10. DateTime时间选择控件',
             page: DateTimeDemo(),
+          ),
+          ListItem(
+            title: '11. SimpleDialog对话框控件',
+            page: SimpleDialogDemo(),
+          ),
+          ListItem(
+            title: '12. AlertDialog对话框控件',
+            page: AlertDialogDemo(),
+          ),
+          ListItem(
+            title: '13. BottomSheet底部表单控件',
+            page: BottomSheetDemo(),
+          ),
+          ListItem(
+            title: '14. SnackBar底部通知控件',
+            page: SnackBarDemo(),
+          ),
+          ListItem(
+            title: '15. ExpansionPanel展开控件',
+            page: ExpansionPanelDemo(),
+          ),
+          ListItem(
+            title: '16. Chip标签控件',
+            page: ChipDemo(),
+          ),
+          ListItem(
+            title: '17. DataTable表格控件',
+            page: DataTableDemo(),
+          ),
+          ListItem(
+            title: '17. PaginatedDataTable可分页表格控件',
+            page: PaginatedDataTableDemo(),
+          ),
+          ListItem(
+            title: '17. Card卡片控件',
+            page: CardDemo(),
+          ),
+          ListItem(
+            title: '18. Stepper步骤控件',
+            page: StepperDemo(),
           ),
         ],
       ),
@@ -68,7 +118,8 @@ class MaterialComponents extends StatelessWidget {
 }
 
 class ListItem extends StatelessWidget {
-  const ListItem({this.title, this.page, key}) : super(key: key);
+  const ListItem({@required this.title, @required this.page, key})
+      : super(key: key);
 
   final String title;
   final Widget page;
@@ -85,14 +136,14 @@ class ListItem extends StatelessWidget {
   }
 }
 
-class WeidgetDemo extends StatelessWidget {
-  const WeidgetDemo({Key key}) : super(key: key);
+class WidgetDemo extends StatelessWidget {
+  const WidgetDemo({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('WeigetDemo'),
+        title: Text('WidgetDemo'),
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),

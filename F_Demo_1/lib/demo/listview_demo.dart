@@ -44,7 +44,7 @@ class ListViewDemo extends StatelessWidget {
               // ),
             ],
           ),
-          //设置item点击时候的溅墨效果
+          //设置item点击时候的渐墨效果
           Positioned.fill(
             child: Material(
               color: Colors.transparent,
