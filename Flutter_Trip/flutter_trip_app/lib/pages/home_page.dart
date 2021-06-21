@@ -11,6 +11,7 @@ import 'package:flutter_trip_app/widget/grid_nav_widget.dart';
 import 'package:flutter_trip_app/widget/loading_container.dart';
 import 'package:flutter_trip_app/widget/local_nav_widget.dart';
 import 'package:flutter_trip_app/widget/sales_box_widget.dart';
+import 'package:flutter_trip_app/widget/search_bar.dart';
 import 'package:flutter_trip_app/widget/sub_nav_widget.dart';
 import 'package:flutter_trip_app/widget/web_view.dart';
 
@@ -21,6 +22,7 @@ class HomePage extends StatefulWidget {
 
 //const常量只能定义在静态代码区内
 const double APPBAR_SCROLL_MAX = 100.0;
+const String SEARCH_BAR_DEFAULT_TEXT = '网红打卡地 景点 酒店 美食';
 
 class _HomePageState extends State<HomePage> {
   List<String> _imgUrls = [
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // loadData();
     _handleRefresh();
-  // _handleRefresh2();
+    // _handleRefresh2();
   }
 
   //改进的结合RefreshLoadIndicator需要的Future
@@ -253,19 +255,92 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _appBar {
+    //1.第一步实现，标题随滑动改变透明度
     //让一个控件可以具有透明度，就把它作为child传入Opacity中
-    return Opacity(
-      opacity: _appbarAlpha,
-      child: Container(
-        height: 80.0,
-        decoration: BoxDecoration(color: Colors.white),
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.only(top: 20.0),
-            child: Text('首页'),
+    // return Opacity(
+    //   opacity: _appbarAlpha,
+    //   child: Container(
+    //     height: 80.0,
+    //     decoration: BoxDecoration(color: Colors.white),
+    //     child: Center(
+    //       child: Padding(
+    //         padding: EdgeInsets.only(top: 20.0),
+    //         child: Text('首页'),
+    //       ),
+    //     ),
+    //   ),
+    // );
+
+    //2.第二步实现，改为实际需要的SearchBar
+    // return SearchBar(
+    //   searchBarType:
+    //   _appbarAlpha > 0.2 ? SearchBarType.homeLight : SearchBarType.home,
+    //   inputBoxClick: _jumpToSearch,
+    //   speakClick: _jumpToSpeak,
+    //   defaultText: SEARCH_BAR_DEFAULT_TEXT,
+    //   leftButtonClick: () {},
+    // );
+
+    //3.第三步实现，自己修改的SearchBar
+    // return Opacity(
+    //   opacity: _appbarAlpha,
+    //   child: Container(
+    //     height: 80.0,
+    //     decoration: BoxDecoration(color: Colors.white),
+    //     child: Center(
+    //       child: Padding(
+    //         padding: EdgeInsets.only(top: 20.0),
+    //         child: SearchBar(
+    //           searchBarType: _appbarAlpha > 0.2
+    //               ? SearchBarType.homeLight
+    //               : SearchBarType.home,
+    //           inputBoxClick: _jumpToSearch,
+    //           speakClick: _jumpToSpeak,
+    //           defaultText: SEARCH_BAR_DEFAULT_TEXT,
+    //           leftButtonClick: () {},
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
+
+    //4.第四步实现，带透明度的SearchBar
+    //这个比较关键，需要好好理解
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              //AppBar渐变遮罩背景
+              colors: [Color(0x66000000), Colors.transparent],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            height: 80.0,
+            decoration: BoxDecoration(
+              color:
+                  Color.fromARGB((_appbarAlpha * 255).toInt(), 255, 255, 255),
+            ),
+            child: SearchBar(
+              searchBarType: _appbarAlpha > 0.2
+                  ? SearchBarType.homeLight
+                  : SearchBarType.home,
+              inputBoxClick: _jumpToSearch,
+              speakClick: _jumpToSpeak,
+              defaultText: SEARCH_BAR_DEFAULT_TEXT,
+              leftButtonClick: () {},
+            ),
           ),
         ),
-      ),
+        Container(
+          height: _appbarAlpha > 0.2 ? 0.5 : 0,
+          decoration: BoxDecoration(
+              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 0.5)]),
+        ),
+      ],
     );
   }
 
@@ -307,4 +382,8 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  void _jumpToSearch() {}
+
+  void _jumpToSpeak() {}
 }
