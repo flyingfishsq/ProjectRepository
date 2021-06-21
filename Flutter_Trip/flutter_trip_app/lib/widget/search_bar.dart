@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 //SearchBarType三种状态的枚举：首页状态下普通的样式，首页状态下高亮的样式，搜索界面下的样式
@@ -63,9 +64,11 @@ class _SearchBarState extends State<SearchBar> {
 
   Widget _genNormalSearch() {
     return Container(
+      padding: EdgeInsets.all(4),
       child: Row(
         children: [
           _wrapTap(
+            //样式
             Container(
               child: widget?.hideLeft ?? false
                   ? null
@@ -75,7 +78,7 @@ class _SearchBarState extends State<SearchBar> {
                       size: 26,
                     ),
             ),
-            //把这个回调传给callback
+            //点击逻辑，把这个回调传给callback
             widget.leftButtonClick,
           ),
           Expanded(
@@ -125,6 +128,7 @@ class _SearchBarState extends State<SearchBar> {
           ),
           Expanded(
               flex: 1,
+              //根据常量创建不同的显示
               child: widget.searchBarType == SearchBarType.normal
                   ? TextField(
                       controller: _controller,
@@ -132,12 +136,12 @@ class _SearchBarState extends State<SearchBar> {
                       autofocus: true,
                       //输入框内文字的样式
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           color: Colors.black,
                           fontWeight: FontWeight.w300),
                       //输入框的样式
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                        contentPadding: EdgeInsets.fromLTRB(8, 8, 8, 8),
                         border: InputBorder.none,
                         hintText: widget.hint ?? '',
                         hintStyle: TextStyle(fontSize: 16),
@@ -147,7 +151,7 @@ class _SearchBarState extends State<SearchBar> {
                       Container(
                         child: Text(
                           widget.defaultText,
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
+                          style: TextStyle(fontSize: 16, color: Colors.grey),
                         ),
                       ),
                       widget.inputBoxClick)),
