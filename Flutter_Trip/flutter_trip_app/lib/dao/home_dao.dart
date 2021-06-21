@@ -1,10 +1,9 @@
 //请求网络接口数据
-import 'package:html/parser.dart' show parse;
-import 'package:html/dom.dart';
-import 'package:flutter_trip_app/model/home_model.dart';
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter_trip_app/model/home_model.dart';
+import 'package:html/parser.dart' show parse;
 //给包改个别名就用as
 import 'package:http/http.dart' as http;
 
