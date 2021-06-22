@@ -8,6 +8,7 @@ import 'package:flutter_trip_app/model/common_model.dart';
 import 'package:flutter_trip_app/model/grid_nav.dart';
 import 'package:flutter_trip_app/model/home_model.dart';
 import 'package:flutter_trip_app/model/sales_box.dart';
+import 'package:flutter_trip_app/pages/search_page.dart';
 import 'package:flutter_trip_app/widget/grid_nav_widget.dart';
 import 'package:flutter_trip_app/widget/loading_container.dart';
 import 'package:flutter_trip_app/widget/local_nav_widget.dart';
@@ -68,10 +69,11 @@ class _HomePageState extends State<HomePage> {
           Fluttertoast.showToast(
             msg: "移动网络连接",
             toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,);
+            gravity: ToastGravity.BOTTOM,
+          );
         });
 
-      // I am connected to a mobile network.
+        // I am connected to a mobile network.
       } else if (result == ConnectivityResult.wifi) {
         setState(() {
           _state = ConnectivityResult.wifi;
@@ -79,17 +81,19 @@ class _HomePageState extends State<HomePage> {
           Fluttertoast.showToast(
             msg: "wifi网络连接",
             toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,);
+            gravity: ToastGravity.BOTTOM,
+          );
         });
 
-      // I am connected to a wifi network.
+        // I am connected to a wifi network.
       } else {
         setState(() {
           _state = ConnectivityResult.none;
           Fluttertoast.showToast(
             msg: "无网络连接",
             toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,);
+            gravity: ToastGravity.BOTTOM,
+          );
         });
       }
     });
@@ -125,11 +129,12 @@ class _HomePageState extends State<HomePage> {
           resultString = e.toString();
         });
       }
-    }else{
+    } else {
       Fluttertoast.showToast(
-          msg: "网络连接错误",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,);
+        msg: "网络连接错误",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
     }
     return null;
   }
@@ -443,7 +448,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _jumpToSearch() {}
+  void _jumpToSearch() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return SearchPage(
+        hint: SEARCH_BAR_DEFAULT_TEXT,
+      );
+    }));
+  }
 
   void _jumpToSpeak() {}
 

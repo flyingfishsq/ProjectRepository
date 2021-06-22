@@ -3,6 +3,7 @@ import 'package:flutter_trip_app/dao/search_dao.dart';
 import 'package:flutter_trip_app/model/search_item.dart';
 import 'package:flutter_trip_app/model/search_model.dart';
 import 'package:flutter_trip_app/widget/search_bar.dart';
+import 'package:flutter_trip_app/widget/web_view.dart';
 
 const String URL =
     'https://m.ctrip.com/restapi/h5api/globalsearch/search?source=mobileweb&action=mobileweb&keyword=';
@@ -103,7 +104,7 @@ class _SearchPageState extends State<SearchPage> {
               defaultText: widget.keyword,
               hint: widget.hint,
               leftButtonClick: () {
-                // Navigator.pop(context);
+                Navigator.pop(context);
               },
               onChanged: _onTextChange,
             ),
@@ -116,6 +117,35 @@ class _SearchPageState extends State<SearchPage> {
   Widget _item(int position) {
     if (searchModel == null || searchModel.data == null) return null;
     SearchItem item = searchModel.data[position];
-    return Text(item.word);
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => WebView(url: item.url, title: '详情')));
+      },
+      child: Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+        child: Row(
+          children: [
+            Column(
+              children: [
+                Container(
+                  width: 300,
+                  //字符串为空对象的时候返回空字符串
+                  child: Text('${item.word} ${item.districtname??''} ${item.zonename??''}'),
+                ),
+                Container(
+                  width: 300,
+                  child: Text('${item.price??''} ${item.type??''}'),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
