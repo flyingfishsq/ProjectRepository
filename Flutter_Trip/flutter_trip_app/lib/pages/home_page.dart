@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -14,6 +15,8 @@ import 'package:flutter_trip_app/widget/sales_box_widget.dart';
 import 'package:flutter_trip_app/widget/search_bar.dart';
 import 'package:flutter_trip_app/widget/sub_nav_widget.dart';
 import 'package:flutter_trip_app/widget/web_view.dart';
+import 'package:connectivity/connectivity.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -44,32 +47,89 @@ class _HomePageState extends State<HomePage> {
   //LoadingView的属性
   bool isLoading = true;
 
+  bool connectionStatus;
+
+  var _subscription;
+
+  ConnectivityResult _state = ConnectivityResult.none;
+
   @override
   initState() {
     super.initState();
+
+    _subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      // Got a new connectivity status!
+      if (result == ConnectivityResult.mobile) {
+        setState(() {
+          _state = ConnectivityResult.mobile;
+          _handleRefresh();
+          Fluttertoast.showToast(
+            msg: "移动网络连接",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,);
+        });
+
+      // I am connected to a mobile network.
+      } else if (result == ConnectivityResult.wifi) {
+        setState(() {
+          _state = ConnectivityResult.wifi;
+          _handleRefresh();
+          Fluttertoast.showToast(
+            msg: "wifi网络连接",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,);
+        });
+
+      // I am connected to a wifi network.
+      } else {
+        setState(() {
+          _state = ConnectivityResult.none;
+          Fluttertoast.showToast(
+            msg: "无网络连接",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,);
+        });
+      }
+    });
+
     // loadData();
     _handleRefresh();
     // _handleRefresh2();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _subscription.cancel();
+  }
+
   //改进的结合RefreshLoadIndicator需要的Future
   Future<Null> _handleRefresh() async {
-    try {
-      HomeModel model = await HomeDao.fetch();
-      setState(() {
-        bannerList = model.bannerList;
-        localNavList = model.localNavList;
-        gridNav = model.gridNav;
-        subNavList = model.subNavList;
-        salesBox = model.salesBox;
-        isLoading = false;
-        resultString = json.encode(model);
-      });
-    } catch (e) {
-      setState(() {
-        isLoading = false;
-        resultString = e.toString();
-      });
+    if (_state != ConnectivityResult.none) {
+      try {
+        HomeModel model = await HomeDao.fetch();
+        setState(() {
+          bannerList = model.bannerList;
+          localNavList = model.localNavList;
+          gridNav = model.gridNav;
+          subNavList = model.subNavList;
+          salesBox = model.salesBox;
+          isLoading = false;
+          resultString = json.encode(model);
+        });
+      } catch (e) {
+        setState(() {
+          isLoading = false;
+          resultString = e.toString();
+        });
+      }
+    }else{
+      Fluttertoast.showToast(
+          msg: "网络连接错误",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,);
     }
     return null;
   }
@@ -386,4 +446,22 @@ class _HomePageState extends State<HomePage> {
   void _jumpToSearch() {}
 
   void _jumpToSpeak() {}
+
+  Future<Null> checkInternet() async {
+    try {
+      String host = "google.com"; //判断国内外，谷歌还是百度
+      host = "baidu.com";
+      final result = await InternetAddress.lookup(host);
+      print("result-- $result");
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        setState(() {
+          connectionStatus = true;
+        });
+      }
+    } on SocketException catch (_) {
+      setState(() {
+        connectionStatus = false;
+      });
+    }
+  }
 }

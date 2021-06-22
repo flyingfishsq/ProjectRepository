@@ -28,12 +28,17 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  flutter_swiper : ^1.1.6
+  flutter_swiper: ^1.1.6
   #WebView组件
   flutter_webview_plugin: ^0.3.0+2
   #网络接口请求lib
   http: ^0.12.0
+  #格式化html，这里用于去除html标签
   html: ^0.15.0
+  #检测网络连接状态
+  connectivity: ^2.0.2
+  #Toast组件
+  fluttertoast: ^7.1.6
 
 dev_dependencies:
   flutter_test:
