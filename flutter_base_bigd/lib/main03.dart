@@ -31,7 +31,6 @@ class HomeContent extends StatelessWidget {
     //把列表中的每个数据映射为一个组件，再集中为一个集合
     var tileList = listData.map((e) {
       return Container(
-        margin: EdgeInsets.all(4),
         decoration: BoxDecoration(color: Colors.lightBlueAccent),
         height: 80,
         child: ListTile(
