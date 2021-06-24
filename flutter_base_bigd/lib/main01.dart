@@ -229,9 +229,9 @@ class HomeContent extends StatelessWidget {
               color: Colors.limeAccent,
               borderRadius: BorderRadius.circular(5),
               image: DecorationImage(
-                image: NetworkImage(
-                    'https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF'),
-              fit: BoxFit.fitWidth),
+                  image: NetworkImage(
+                      'https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF'),
+                  fit: BoxFit.fitWidth),
             ),
 
             // child: CircleAvatar(
@@ -265,14 +265,13 @@ class HomeContent extends StatelessWidget {
 
           //这样的设置，对于某些长宽比例的图片，在某些数值设置下，会是椭圆形，不信这里长宽都改为80
           //可能是trailing属性对图片设置了最大长宽（貌似是55）从而影响内部组件的长宽设置，应该是对最大高度做了限制
-          trailing:
-            ClipOval(
-              child: Image.network(
-                'https://t7.baidu.com/it/u=1951548898,3927145&fm=193&f=GIF',
-                width: 55,
-                height: 55,
-                fit: BoxFit.cover,
-              ),
+          trailing: ClipOval(
+            child: Image.network(
+              'https://t7.baidu.com/it/u=1951548898,3927145&fm=193&f=GIF',
+              width: 55,
+              height: 55,
+              fit: BoxFit.cover,
+            ),
           ),
 
           title: Text(
