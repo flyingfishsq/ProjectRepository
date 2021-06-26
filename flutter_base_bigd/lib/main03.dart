@@ -117,6 +117,7 @@ class HomeContent extends StatelessWidget {
     // );
 
     return GridView.builder(
+        padding: EdgeInsets.all(4),
         scrollDirection: Axis.horizontal,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           //设置为1就成了ListView
