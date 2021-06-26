@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -7,12 +8,16 @@ import 'package:flutter_trip_app/model/common_model.dart';
 import 'package:flutter_trip_app/model/grid_nav.dart';
 import 'package:flutter_trip_app/model/home_model.dart';
 import 'package:flutter_trip_app/model/sales_box.dart';
+import 'package:flutter_trip_app/pages/search_page.dart';
 import 'package:flutter_trip_app/widget/grid_nav_widget.dart';
 import 'package:flutter_trip_app/widget/loading_container.dart';
 import 'package:flutter_trip_app/widget/local_nav_widget.dart';
 import 'package:flutter_trip_app/widget/sales_box_widget.dart';
+import 'package:flutter_trip_app/widget/search_bar.dart';
 import 'package:flutter_trip_app/widget/sub_nav_widget.dart';
 import 'package:flutter_trip_app/widget/web_view.dart';
+import 'package:connectivity/connectivity.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,6 +26,7 @@ class HomePage extends StatefulWidget {
 
 //const常量只能定义在静态代码区内
 const double APPBAR_SCROLL_MAX = 100.0;
+const String SEARCH_BAR_DEFAULT_TEXT = '网红打卡地 景点 酒店 美食';
 
 class _HomePageState extends State<HomePage> {
   List<String> _imgUrls = [
@@ -42,32 +48,93 @@ class _HomePageState extends State<HomePage> {
   //LoadingView的属性
   bool isLoading = true;
 
+  bool connectionStatus;
+
+  var _subscription;
+
+  ConnectivityResult _state = ConnectivityResult.none;
+
   @override
   initState() {
     super.initState();
+
+    _subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      // Got a new connectivity status!
+      if (result == ConnectivityResult.mobile) {
+        setState(() {
+          _state = ConnectivityResult.mobile;
+          _handleRefresh();
+          Fluttertoast.showToast(
+            msg: "移动网络连接",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+          );
+        });
+
+        // I am connected to a mobile network.
+      } else if (result == ConnectivityResult.wifi) {
+        setState(() {
+          _state = ConnectivityResult.wifi;
+          _handleRefresh();
+          Fluttertoast.showToast(
+            msg: "wifi网络连接",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+          );
+        });
+
+        // I am connected to a wifi network.
+      } else {
+        setState(() {
+          _state = ConnectivityResult.none;
+          Fluttertoast.showToast(
+            msg: "无网络连接",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+          );
+        });
+      }
+    });
+
     // loadData();
     _handleRefresh();
-  // _handleRefresh2();
+    // _handleRefresh2();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _subscription.cancel();
   }
 
   //改进的结合RefreshLoadIndicator需要的Future
   Future<Null> _handleRefresh() async {
-    try {
-      HomeModel model = await HomeDao.fetch();
-      setState(() {
-        bannerList = model.bannerList;
-        localNavList = model.localNavList;
-        gridNav = model.gridNav;
-        subNavList = model.subNavList;
-        salesBox = model.salesBox;
-        isLoading = false;
-        resultString = json.encode(model);
-      });
-    } catch (e) {
-      setState(() {
-        isLoading = false;
-        resultString = e.toString();
-      });
+    if (_state != ConnectivityResult.none) {
+      try {
+        HomeModel model = await HomeDao.fetch();
+        setState(() {
+          bannerList = model.bannerList;
+          localNavList = model.localNavList;
+          gridNav = model.gridNav;
+          subNavList = model.subNavList;
+          salesBox = model.salesBox;
+          isLoading = false;
+          resultString = json.encode(model);
+        });
+      } catch (e) {
+        setState(() {
+          isLoading = false;
+          resultString = e.toString();
+        });
+      }
+    } else {
+      Fluttertoast.showToast(
+        msg: "网络连接错误",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
     }
     return null;
   }
@@ -253,19 +320,92 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _appBar {
+    //1.第一步实现，标题随滑动改变透明度
     //让一个控件可以具有透明度，就把它作为child传入Opacity中
-    return Opacity(
-      opacity: _appbarAlpha,
-      child: Container(
-        height: 80.0,
-        decoration: BoxDecoration(color: Colors.white),
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.only(top: 20.0),
-            child: Text('首页'),
+    // return Opacity(
+    //   opacity: _appbarAlpha,
+    //   child: Container(
+    //     height: 80.0,
+    //     decoration: BoxDecoration(color: Colors.white),
+    //     child: Center(
+    //       child: Padding(
+    //         padding: EdgeInsets.only(top: 20.0),
+    //         child: Text('首页'),
+    //       ),
+    //     ),
+    //   ),
+    // );
+
+    //2.第二步实现，改为实际需要的SearchBar
+    // return SearchBar(
+    //   searchBarType:
+    //   _appbarAlpha > 0.2 ? SearchBarType.homeLight : SearchBarType.home,
+    //   inputBoxClick: _jumpToSearch,
+    //   speakClick: _jumpToSpeak,
+    //   defaultText: SEARCH_BAR_DEFAULT_TEXT,
+    //   leftButtonClick: () {},
+    // );
+
+    //3.第三步实现，自己修改的SearchBar
+    // return Opacity(
+    //   opacity: _appbarAlpha,
+    //   child: Container(
+    //     height: 80.0,
+    //     decoration: BoxDecoration(color: Colors.white),
+    //     child: Center(
+    //       child: Padding(
+    //         padding: EdgeInsets.only(top: 20.0),
+    //         child: SearchBar(
+    //           searchBarType: _appbarAlpha > 0.2
+    //               ? SearchBarType.homeLight
+    //               : SearchBarType.home,
+    //           inputBoxClick: _jumpToSearch,
+    //           speakClick: _jumpToSpeak,
+    //           defaultText: SEARCH_BAR_DEFAULT_TEXT,
+    //           leftButtonClick: () {},
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
+
+    //4.第四步实现，带透明度的SearchBar
+    //这个比较关键，需要好好理解
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              //AppBar渐变遮罩背景
+              colors: [Color(0x66000000), Colors.transparent],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            height: 80.0,
+            decoration: BoxDecoration(
+              color:
+                  Color.fromARGB((_appbarAlpha * 255).toInt(), 255, 255, 255),
+            ),
+            child: SearchBar(
+              searchBarType: _appbarAlpha > 0.2
+                  ? SearchBarType.homeLight
+                  : SearchBarType.home,
+              inputBoxClick: _jumpToSearch,
+              speakClick: _jumpToSpeak,
+              defaultText: SEARCH_BAR_DEFAULT_TEXT,
+              leftButtonClick: () {},
+            ),
           ),
         ),
-      ),
+        Container(
+          height: _appbarAlpha > 0.2 ? 0.5 : 0,
+          decoration: BoxDecoration(
+              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 0.5)]),
+        ),
+      ],
     );
   }
 
@@ -306,5 +446,33 @@ class _HomePageState extends State<HomePage> {
         controller: SwiperController(),
       ),
     );
+  }
+
+  void _jumpToSearch() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return SearchPage(
+        hint: SEARCH_BAR_DEFAULT_TEXT,
+      );
+    }));
+  }
+
+  void _jumpToSpeak() {}
+
+  Future<Null> checkInternet() async {
+    try {
+      String host = "google.com"; //判断国内外，谷歌还是百度
+      host = "baidu.com";
+      final result = await InternetAddress.lookup(host);
+      print("result-- $result");
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        setState(() {
+          connectionStatus = true;
+        });
+      }
+    } on SocketException catch (_) {
+      setState(() {
+        connectionStatus = false;
+      });
+    }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 //SearchBarType三种状态的枚举：首页状态下普通的样式，首页状态下高亮的样式，搜索界面下的样式
@@ -63,10 +64,13 @@ class _SearchBarState extends State<SearchBar> {
 
   Widget _genNormalSearch() {
     return Container(
+      padding: EdgeInsets.all(4),
       child: Row(
         children: [
           _wrapTap(
+            //样式
             Container(
+              padding: EdgeInsets.all(4),
               child: widget?.hideLeft ?? false
                   ? null
                   : Icon(
@@ -75,7 +79,7 @@ class _SearchBarState extends State<SearchBar> {
                       size: 26,
                     ),
             ),
-            //把这个回调传给callback
+            //点击逻辑，把这个回调传给callback
             widget.leftButtonClick,
           ),
           Expanded(
@@ -98,7 +102,53 @@ class _SearchBarState extends State<SearchBar> {
     );
   }
 
-  Widget _genHomeSearch() {}
+  Widget _genHomeSearch() {
+    return Container(
+      padding: EdgeInsets.all(4),
+      child: Row(
+        children: [
+          _wrapTap(
+            //样式
+            Container(
+              padding: EdgeInsets.all(4),
+              child: Row(
+                children: [
+                  Text(
+                    '上海',
+                    //根据首页背景色来设置字体颜色
+                    style: TextStyle(color: _homeFontColor(), fontSize: 16),
+                  ),
+                  Icon(
+                    Icons.expand_more,
+                    color: _homeFontColor(),
+                    size: 26,
+                  ),
+                ],
+              ),
+            ),
+            //点击逻辑，把这个回调传给callback
+            widget.leftButtonClick,
+          ),
+          Expanded(
+            flex: 1,
+            child: _inputBox(),
+          ),
+          _wrapTap(
+            Container(
+              padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+              child: Icon(
+                Icons.comment,
+                color: _homeFontColor(),
+                size: 26,
+              ),
+            ),
+            //把这个回调传给callback
+            widget.rightButtonClick,
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _inputBox() {
     Color inputBoxColor;
@@ -125,6 +175,7 @@ class _SearchBarState extends State<SearchBar> {
           ),
           Expanded(
               flex: 1,
+              //根据常量创建不同的显示
               child: widget.searchBarType == SearchBarType.normal
                   ? TextField(
                       controller: _controller,
@@ -132,12 +183,12 @@ class _SearchBarState extends State<SearchBar> {
                       autofocus: true,
                       //输入框内文字的样式
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           color: Colors.black,
                           fontWeight: FontWeight.w300),
                       //输入框的样式
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                        contentPadding: EdgeInsets.fromLTRB(8, 8, 8, 8),
                         border: InputBorder.none,
                         hintText: widget.hint ?? '',
                         hintStyle: TextStyle(fontSize: 16),
@@ -147,10 +198,35 @@ class _SearchBarState extends State<SearchBar> {
                       Container(
                         child: Text(
                           widget.defaultText,
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
+                          style: TextStyle(fontSize: 16, color: Colors.grey),
                         ),
                       ),
                       widget.inputBoxClick)),
+          //有输入文字的时候显示清除按钮，没有输入文字的时候显示语音按钮
+          !showClear
+              ? _wrapTap(
+                  Icon(
+                    Icons.mic,
+                    size: 22,
+                    color: widget.searchBarType == SearchBarType.normal
+                        ? Colors.blue
+                        : Colors.grey,
+                  ),
+                  widget.speakClick)
+              : _wrapTap(
+                  Icon(
+                    Icons.clear,
+                    size: 22,
+                    color: Colors.grey,
+                  ),
+                  //设置点击逻辑
+                  () {
+                    setState(() {
+                      _controller.clear();
+                    });
+                    _onChanged('');
+                  },
+                ),
         ],
       ),
     );
@@ -178,5 +254,11 @@ class _SearchBarState extends State<SearchBar> {
     if (widget.onChanged != null) {
       widget.onChanged(text);
     }
+  }
+
+  _homeFontColor() {
+    return widget.searchBarType == SearchBarType.homeLight
+        ? Colors.black54
+        : Colors.white;
   }
 }
