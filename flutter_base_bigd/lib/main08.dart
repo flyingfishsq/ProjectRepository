@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Wrap组件'),
+          title: Text('StatefulWidget组件'),
         ),
         body: HomeContent1(),
       ),
